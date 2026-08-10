@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Diagnostica del video dell'hero — Sophia</title>
+<link rel="stylesheet" href="sophia-tokens.css">
+<link rel="stylesheet" href="sophia-site.css">
+<style>
+  body{padding:40px 0}
+  .esito{display:grid;gap:10px;margin:24px 0}
+  .riga{display:grid;grid-template-columns:26px 1fr auto;gap:14px;align-items:start;
+        padding:14px 18px;border:.5px solid var(--color-border);border-radius:var(--radius-md)}
+  .riga b{font-weight:500;color:var(--sophia-navy)}
+  .riga small{display:block;color:var(--color-text-body);font-size:14px;margin-top:2px}
+  .riga .val{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--color-text-muted);text-align:right}
+  .ok{background:#F2F8F3;border-color:#BEDCC4}
+  .ko{background:#FDF3F3;border-color:#EBC4C4}
+  .na{background:var(--color-bg-alt)}
+  .ico{font-size:18px;line-height:1.4}
+  .box{background:var(--sophia-navy);color:#fff;border-radius:var(--radius-lg);padding:28px;margin-top:32px}
+  .box h2{color:#fff;font-size:22px;margin-bottom:10px}
+  .box p{color:var(--color-text-on-dark-soft)}
+  .box code{background:rgba(255,255,255,.14);padding:3px 8px;border-radius:4px;font-size:14px}
+  video.prova{width:100%;max-width:520px;border-radius:var(--radius-md);background:#000;margin-top:16px}
+</style>
+</head>
+<body>
+
+<div class="narrow">
+  <p class="eyebrow">Strumento di servizio</p>
+  <h1 style="font-size:34px;margin:10px 0 8px">Perché il video non parte</h1>
+  <p class="lead">Questa pagina prova a riprodurre lo stesso file dell'hero e riporta che cosa succede. Aprila con lo stesso browser in cui il video resta fermo e mandami uno screenshot del risultato.</p>
+
+  <div class="esito" id="esito"></div>
+
+  <h2 style="font-size:22px;margin-top:36px">Riproduzione di prova</h2>
+  <p style="color:var(--color-text-body);margin-top:8px">Se questo riquadro resta nero ma il pulsante di riproduzione funziona, il problema è l'avvio automatico, non il file.</p>
+  <video class="prova" controls muted loop playsinline preload="metadata" poster="media/hero-sophia-poster.jpg">
+    <source src="media/hero-sophia.mp4" type="video/mp4">
+    <source src="media/hero-sophia.webm" type="video/webm">
+  </video>
+
+  <div class="box">
+    <h2>La causa più probabile: il protocollo <code>file://</code></h2>
+    <p>Se hai aperto <code>index.html</code> con un doppio clic dal Finder, l'indirizzo comincia con <code>file://</code>. Safari — e in parte anche Chrome — limita la riproduzione dei video caricati così, perché non può fare le richieste parziali che servono a leggerli a pezzi.</p>
+    <p style="margin-top:14px">Non è un difetto del sito: online, servito da un vero server web, il problema sparisce. Per provarlo in locale, apri il Terminale, entra nella cartella del sito e avvia:</p>
+    <p style="margin-top:12px"><code>cd "percorso/della/cartella/sito-sophia" &amp;&amp; python3 -m http.server 8000</code></p>
+    <p style="margin-top:12px">Poi vai su <code>http://localhost:8000</code>. Se lì il video parte, era solo <code>file://</code>.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var out = document.getElementById('esito');
+  function riga(stato, titolo, nota, valore) {
+    var d = document.createElement('div');
+    d.className = 'riga ' + stato;
+    d.innerHTML = '<span class="ico">' + (stato === 'ok' ? '✓' : stato === 'ko' ? '✕' : '·') + '</span>' +
+      '<span><b>' + titolo + '</b><small>' + nota + '</small></span>' +
+      '<span class="val">' + (valore === undefined ? '' : String(valore)) + '</span>';
+    out.appendChild(d);
+  }
+
+  var proto = location.protocol;
+  riga(proto === 'file:' ? 'ko' : 'ok', 'Protocollo della pagina',
+    proto === 'file:' ? 'Aperta dal disco: è la causa più frequente del problema.' : 'Servita da un server web: condizione corretta.',
+    proto);
+
+  var v = document.createElement('video');
+  var mp4 = v.canPlayType('video/mp4; codecs="avc1.42E01E"');
+  var webm = v.canPlayType('video/webm; codecs="vp9"');
+  riga(mp4 ? 'ok' : 'ko', 'Supporto MP4 (H.264)', 'È la sorgente principale dell’hero.', mp4 || 'no');
+  riga(webm ? 'ok' : 'na', 'Supporto WebM (VP9)', 'Sorgente alternativa: non indispensabile.', webm || 'no');
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  riga(reduce ? 'ko' : 'ok', 'Riduzione del movimento',
+    reduce ? 'Attiva nelle preferenze di sistema: il sito rimuove il video di proposito.' : 'Non attiva.',
+    reduce ? 'attiva' : 'no');
+
+  var small = window.matchMedia('(max-width: 860px)').matches;
+  riga(small ? 'ko' : 'ok', 'Larghezza della finestra',
+    small ? 'Sotto 860 px: il video non viene caricato per non consumare dati.' : 'Sopra la soglia di 860 px.',
+    window.innerWidth + ' px');
+
+  var c = navigator.connection || {};
+  var slow = c.saveData === true || /^(slow-)?2g$/.test(c.effectiveType || '');
+  riga(slow ? 'ko' : 'ok', 'Connessione dichiarata',
+    slow ? 'Risparmio dati o rete lenta: il video viene saltato di proposito.' : 'Nessuna limitazione dichiarata.',
+    (c.effectiveType || 'non dichiarata') + (c.saveData ? ' · risparmio dati' : ''));
+
+  // prova reale di avvio automatico
+  var t = document.createElement('video');
+  t.muted = true; t.playsInline = true; t.preload = 'auto';
+  // stesse sorgenti dell'hero, nello stesso ordine: così la prova
+  // riproduce esattamente la scelta che fa il browser sulla home
+  ['media/hero-sophia.mp4|video/mp4', 'media/hero-sophia.webm|video/webm'].forEach(function (s) {
+    var p = s.split('|'), el = document.createElement('source');
+    el.src = p[0]; el.type = p[1]; t.appendChild(el);
+  });
+  t.style.cssText = 'position:fixed;left:-9999px;width:2px;height:2px';
+  document.body.appendChild(t);
+  t.load();
+  var deciso = false;
+  function esito(stato, nota, val) {
+    if (deciso) return; deciso = true;
+    riga(stato, 'Avvio automatico del video', nota, val);
+    t.remove();
+  }
+  t.addEventListener('error', function () {
+    esito('ko', 'Il file non è stato caricato: il browser ha rifiutato la richiesta.', 'errore di caricamento');
+  });
+  var p = t.play();
+  if (p && p.then) {
+    p.then(function () { esito('ok', 'Il video parte da solo: l’hero dovrebbe funzionare.', 'consentito'); })
+     .catch(function (e) { esito('ko', 'Il browser ha negato l’avvio automatico. Sul sito compare il pulsante ▶ Riproduci.', e.name); });
+  }
+  setTimeout(function () { esito('ko', 'Nessuna risposta entro 5 secondi: il file non è stato letto.', 'tempo scaduto'); }, 5000);
+
+  setTimeout(function () {
+    riga('na', 'Browser', navigator.userAgent.slice(0, 110), '');
+  }, 5200);
+})();
+</script>
+</body>
+</html>
