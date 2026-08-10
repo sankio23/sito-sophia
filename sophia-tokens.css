@@ -1,0 +1,135 @@
+/* ============================================================
+   SOPHIA — Design tokens del sito
+   Unica sorgente di verità. Nessun altro file deve dichiarare
+   variabili in :root: sophia-site.css consuma soltanto.
+
+   Fonte colori: SophiaBRANDMANUALrev2023.pdf (palette ufficiale,
+   pp. 6-7 e 12-13). Verifica: i valori primari corrispondono
+   esattamente al manuale.
+
+   Strategia cromatica:
+     - Navy + bianco dominanti
+     - ORO = colore di SUPERFICIE (pulsanti, filetti, campiture).
+       NON è un colore da testo: #F8B815 su bianco misura 1,77:1.
+     - INDACO = colore di INCHIOSTRO per link e accenti testuali
+       (#61699C = 5,24:1 su bianco; #4A5180 = 7,55:1).
+     - Lavanda = fondi tenui e alternanze di sezione.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   WEBFONT UFFICIALI
+   Windsor Light BT (titoli) e Frutiger (testo) sono font a
+   licenza: serve la licenza webfont prima di attivarli.
+   Fino ad allora valgono i fallback dichiarati in --font-*.
+   ------------------------------------------------------------
+   @font-face { font-family:"Frutiger"; src:url("fonts/Frutiger-Roman.woff2") format("woff2"); font-weight:400; font-display:swap }
+   @font-face { font-family:"Frutiger"; src:url("fonts/Frutiger-Bold.woff2")  format("woff2"); font-weight:700; font-display:swap }
+   @font-face { font-family:"Windsor";  src:url("fonts/Windsor-Light.woff2")  format("woff2"); font-weight:300; font-display:swap }
+   ------------------------------------------------------------ */
+
+:root {
+
+  /* === 1. PALETTE DI MARCHIO ================================
+     Valori presi dal manuale. Non modificare senza il manuale. */
+  --sophia-gold:      #F8B815;  /* manuale p. 6 — accento, superfici */
+  --sophia-navy:      #152D3A;  /* manuale p. 7 — istituzionale */
+  --sophia-indigo:    #61699C;  /* manuale p. 6 — rombo scuro del simbolo */
+  --sophia-lavender:  #B0B8DB;  /* manuale p. 6 — rombo chiaro */
+  --sophia-gray-300:  #DDDDDD;  /* manuale p. 12 */
+  --sophia-gray-500:  #A0A09F;  /* manuale p. 12 */
+  --sophia-ink:       #1D1D1B;  /* manuale p. 13 — nero testo */
+  --sophia-white:     #FFFFFF;
+
+  /* === 2. VARIANTI DI SERVIZIO ==============================
+     Derivate dalla palette, con il rapporto di contrasto su
+     bianco annotato accanto. Il valore va verificato a ogni
+     modifica: è ciò che tiene il sito conforme AA. */
+  --sophia-navy-soft:    #0C2C41;  /* navy campionato dal logo */
+  --sophia-navy-line:    #1C3A4D;  /* superfici su fondo navy */
+  --sophia-indigo-dark:  #4A5180;  /*  7,55:1 — inchiostro forte */
+  --sophia-lavender-50:  #EDEFF7;  /* fondo di sezione */
+  --sophia-gray-600:     #696967;  /*  5,50:1 su bianco · 4,79:1 sul fondo
+                                      lavanda: passa AA su entrambi. Con #767674
+                                      passava solo su bianco (3,96 sul lavanda). */
+  --sophia-slate:        #4A5663;  /*  7,49:1 — corpo del testo */
+  --sophia-slate-dark:   #33414E;  /* 10,46:1 — prosa lunga */
+  --sophia-gold-deep:    #916C0C;  /*  4,82:1 — oro AA, solo se serve
+                                      davvero un accento caldo a testo.
+                                      Preferire l'indaco. */
+
+  /* === 3. RUOLI SEMANTICI ===================================
+     I componenti usano SOLO questi. Cambiare il tema significa
+     rimappare qui, non cercare gli esadecimali nel CSS. */
+
+  /* superfici */
+  --color-bg:              var(--sophia-white);
+  --color-bg-alt:          var(--sophia-lavender-50);
+  --color-bg-dark:         var(--sophia-navy);
+  --color-bg-darker:       var(--sophia-navy-soft);
+  --color-surface:         var(--sophia-white);
+  --color-surface-dark:    var(--sophia-navy-line);
+
+  /* inchiostri su fondo chiaro */
+  --color-text:            var(--sophia-navy);       /* 14,30:1 */
+  --color-text-body:       var(--sophia-slate);      /*  7,49:1 */
+  --color-text-prose:      var(--sophia-slate-dark); /* 10,46:1 */
+  --color-text-muted:      var(--sophia-gray-600);   /*  4,55:1 */
+  --color-text-eyebrow:    var(--sophia-indigo);     /*  5,24:1 */
+  --color-link:            var(--sophia-indigo-dark);/*  7,55:1 */
+  --color-link-hover:      var(--sophia-navy);
+
+  /* inchiostri su fondo navy */
+  --color-text-on-dark:        var(--sophia-white);
+  --color-text-on-dark-soft:   #D7DEEA;  /* 10,57:1 su navy */
+  --color-text-on-dark-muted:  #BCC8D6;  /*  7,02:1 su navy-line */
+  --color-link-on-dark:        #E3E9F3;
+  --color-eyebrow-on-dark:     var(--sophia-lavender); /* 7,30:1 su navy */
+
+  /* accenti e superfici colorate */
+  --color-accent:          var(--sophia-gold);  /* SUPERFICIE, non testo */
+  --color-on-accent:       var(--sophia-navy);  /* 8,08:1 sull'oro */
+  --color-accent-ink:      var(--sophia-gold-deep);
+
+  /* bordi e filetti — nessun requisito di contrasto testuale */
+  --color-border:          rgba(21,45,58,.12);
+  --color-border-strong:   rgba(21,45,58,.22);
+  --color-border-on-dark:  rgba(255,255,255,.16);
+
+  /* stato di focus */
+  --color-focus:           var(--sophia-indigo-dark);
+  --color-focus-on-dark:   var(--sophia-gold);
+
+  /* accenti dei centri di ricerca — solo nelle relative sezioni */
+  --center-eg:              #C9920E;  /* Evangelii Gaudium */
+  --center-global-studies:  #2CA8AE;  /* Sophia Global Studies */
+  --center-politics-hr:     #B10000;  /* Politics and Human Rights */
+
+  /* === 4. TIPOGRAFIA ======================================== */
+  --font-heading: "Windsor", "Windsor Light", Georgia, "Times New Roman", serif;
+  --font-body:    "Frutiger", "Frutiger LT", "Segoe UI", "Open Sans", system-ui, -apple-system, sans-serif;
+
+  /* === 5. MOVIMENTO =========================================
+     Una sola scala di durate e una sola curva. Il senso di
+     "morbido" non viene dal rallentare tutto, ma dall'usare
+     ovunque la stessa accelerazione: micro-interazioni rapide,
+     comparse lente, nessun valore inventato caso per caso.
+     Tutto è disattivato da prefers-reduced-motion. */
+  --ease:      cubic-bezier(.22,.61,.36,1);   /* uscita morbida, standard */
+  --ease-soft: cubic-bezier(.33,1,.68,1);     /* più lenta in coda */
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+
+  --dur-xs: 120ms;   /* stati istantanei: pressione, fuoco */
+  --dur-sm: 200ms;   /* passaggi del cursore */
+  --dur-md: 340ms;   /* tendine, pannelli */
+  --dur-lg: 620ms;   /* comparsa allo scorrimento */
+  --dur-xl: 900ms;   /* dissolvenze del media */
+
+  /* === 6. FORMA E SPAZIO ==================================== */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --header-h: 78px;          /* altezza della barra fissa */
+  --util-h:   38px;          /* barra di servizio */
+  --scroll-offset: 92px;     /* header + respiro, per le ancore */
+}
