@@ -1,0 +1,307 @@
+{
+ "titolo": "Licenza Magistrale in Filosofia, Economia di Comunione e Ambiente",
+ "sottotitolo": "Piano degli studi",
+ "premessa": "La Licenza Magistrale si articola in due percorsi: quello interno a Sophia e quello in doppio titolo con l'Università degli Studi di Perugia, in cui il primo semestre del secondo anno si svolge a Perugia.",
+ "indirizzi": [
+  {
+   "nome": "Percorso ordinario",
+   "doppio_titolo": null,
+   "anni": [
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia dinamica, relazioni e ambiente",
+       "docente": "Maria Mirandi; Irene Severi",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Ontologia della relazione e filosofie della mediazione",
+       "docente": "Francesco Patrone",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia politica e cultura dell'incontro",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SPS/01"
+      },
+      {
+       "corso": "Economia Politica",
+       "docente": "Docente di Economia",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "Teologia Sistematica: antropologia teologica e prospettive di ontologia",
+       "docente": "Declan O'Byrne",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "TH/06"
+      },
+      {
+       "corso": "Forme di umanesimo e modelli di relazionalità tra etica, economia e ambiente",
+       "docente": "Francesco Patrone",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Antropologia filosofica e ambiente",
+       "docente": "Alessandro Borghesi",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Logica, teoria dei giochi e felicità",
+       "docente": "Marco Sanchioni",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Filosofie post-coloniali e dialogo tra le culture",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Economia civile",
+       "docente": "Docente di Economia",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "Teologia Biblica ed economia",
+       "docente": "Philippe Van den Heede",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "BIB/12"
+      },
+      {
+       "corso": "Idoneità di lingua",
+       "docente": "",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "66"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Filosofie polari e dialogo interculturale",
+       "docente": "Alessandro Borghesi",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Economia di Comunione",
+       "docente": "Docente di Economia",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "Etica, dialogo interculturale ed economia di comunione",
+       "docente": "Docente di Economia",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "AI e prospettive di umanesimo: tra economia e ambiente",
+       "docente": "Marco Sanchioni",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Economia e ambiente",
+       "docente": "Docente di Economia",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SECS-P/06"
+      },
+      {
+       "corso": "Corsi interdisciplinari a scelta",
+       "docente": "Contrattista",
+       "ects": "9",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tirocinio",
+       "docente": "",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tesi",
+       "docente": "",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "54"
+    }
+   ],
+   "descrizione": "Percorso interamente svolto a Sophia, dal primo all'ultimo semestre."
+  },
+  {
+   "nome": "Percorso in doppio titolo",
+   "doppio_titolo": "Università degli Studi di Perugia",
+   "anni": [
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia dinamica, relazioni e ambiente",
+       "docente": "Maria Mirandi; Irene Severi",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Ontologia della relazione e filosofie della mediazione",
+       "docente": "Francesco Patrone",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Economia Politica",
+       "docente": "Docente di Economia",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "Teologia Sistematica: antropologia teologica e prospettive di ontologia",
+       "docente": "Declan O'Byrne",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "TH/06"
+      },
+      {
+       "corso": "Forme di umanesimo e modelli di relazionalità tra etica, economia e ambiente",
+       "docente": "Francesco Patrone",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Logica, teoria dei giochi e felicità",
+       "docente": "Marco Sanchioni",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Filosofie post-coloniali e dialogo tra le culture",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "3",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Economia civile",
+       "docente": "Docente di Economia",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "Teologia Biblica ed economia",
+       "docente": "Philippe Van den Heede",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "BIB/12"
+      },
+      {
+       "corso": "Idoneità di lingua",
+       "docente": "",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "57"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Arte e luoghi nella storia del pensiero tra etica ed estetica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Economia e amministrazione delle imprese",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SECS-P/02"
+      },
+      {
+       "corso": "A scelta tra Economia civile e Antropologia filosofica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SECS-P/01 – M-FIL/01"
+      },
+      {
+       "corso": "Teoria del soggetto e dell'alterità",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/01"
+      },
+      {
+       "corso": "Economia della sostenibilità e ambiente",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SECS-P/01"
+      },
+      {
+       "corso": "Corsi interdisciplinari a scelta",
+       "docente": "Contrattista",
+       "ects": "9",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tirocinio",
+       "docente": "",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tesi",
+       "docente": "",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "63"
+    }
+   ],
+   "descrizione": "In convenzione con l'Università degli Studi di Perugia: il primo semestre del secondo anno si svolge a Perugia."
+  }
+ ]
+}

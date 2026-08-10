@@ -1,0 +1,654 @@
+{
+ "titolo": "Baccalaureato in Filosofia e Scienze Umane",
+ "sottotitolo": "Piano degli studi",
+ "premessa": "Il Baccalaureato in Filosofia e Scienze Umane si articola in tre indirizzi. Due prevedono il doppio titolo in convenzione con l'Università degli Studi di Perugia; il terzo è interamente interno a Sophia.",
+ "indirizzi": [
+  {
+   "nome": "Indirizzo psicologico",
+   "doppio_titolo": "Università degli Studi di Perugia",
+   "anni": [
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia generale",
+       "docente": "Irene Severi",
+       "ects": "12",
+       "semestre": "I",
+       "ssd": "M-PSI/01"
+      },
+      {
+       "corso": "Psicologia dello sviluppo I",
+       "docente": "Irene Severi",
+       "ects": "5",
+       "semestre": "I",
+       "ssd": "M-PSI/04"
+      },
+      {
+       "corso": "Logica e filosofia del linguaggio",
+       "docente": "Marco Sanchioni",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Storia della filosofia I",
+       "docente": "Francesco Patrone",
+       "ects": "10",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Psicologia dello sviluppo II",
+       "docente": "Maria Mirandi",
+       "ects": "5",
+       "semestre": "II",
+       "ssd": "M-PSI/04"
+      },
+      {
+       "corso": "Storia della filosofia II",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "8",
+       "semestre": "II",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Filosofia morale I",
+       "docente": "Alessandro Borghesi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia e teologia in dialogo",
+       "docente": "Declan O'Byrne",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "TH/02"
+      },
+      {
+       "corso": "Idoneità di lingua",
+       "docente": "",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tirocinio Pratico Valutativo",
+       "docente": "Irene Severi; Maria Mirandi",
+       "ects": "10",
+       "semestre": "I-II-II anno",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "71"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia sociale",
+       "docente": "Irene Severi",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-PSI/05"
+      },
+      {
+       "corso": "Psicologia dinamica",
+       "docente": "Maria Mirandi",
+       "ects": "10",
+       "semestre": "I",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Storia della filosofia III",
+       "docente": "Francesco Patrone",
+       "ects": "8",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Teologia sistematica",
+       "docente": "Declan O'Byrne",
+       "ects": "9",
+       "semestre": "I",
+       "ssd": "TH/02"
+      },
+      {
+       "corso": "Ermeneutica biblica I",
+       "docente": "Philippe Van den Heede",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "BIB/05"
+      },
+      {
+       "corso": "Psicopatologia dello sviluppo",
+       "docente": "Maria Mirandi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Ermeneutica biblica II",
+       "docente": "Philippe Van den Heede",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "BIB/05"
+      },
+      {
+       "corso": "Cosmologia e Antropologia",
+       "docente": "Marco Sanchioni",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Corsi Interdisciplinari a scelta",
+       "docente": "",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Corsi Interdisciplinari a scelta",
+       "docente": "",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "62"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia clinica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-PSI/08"
+      },
+      {
+       "corso": "Psicologia fisiologica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-PSI/02"
+      },
+      {
+       "corso": "Modelli relazionali in psicologia dinamica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Psicologia cognitiva",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "9",
+       "semestre": "II",
+       "ssd": "M-PSI/01"
+      },
+      {
+       "corso": "Psicologia del lavoro",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "5",
+       "semestre": "I",
+       "ssd": "M-PSI/06"
+      },
+      {
+       "corso": "Psicometria e teorie e tecniche dei test",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": "M-PSI/03"
+      },
+      {
+       "corso": "Prova finale",
+       "docente": "",
+       "ects": "3",
+       "semestre": "",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "47"
+    }
+   ],
+   "descrizione": "In convenzione con l'Università degli Studi di Perugia: il terzo anno si svolge presso l'ateneo convenzionato."
+  },
+  {
+   "nome": "Indirizzo filosofico",
+   "doppio_titolo": "Università degli Studi di Perugia",
+   "anni": [
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia generale",
+       "docente": "Irene Severi",
+       "ects": "12",
+       "semestre": "I",
+       "ssd": "M-PSI/01"
+      },
+      {
+       "corso": "Psicologia dello sviluppo I",
+       "docente": "Irene Severi",
+       "ects": "5",
+       "semestre": "I",
+       "ssd": "M-PSI/04"
+      },
+      {
+       "corso": "Logica e filosofia del linguaggio",
+       "docente": "Marco Sanchioni",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Storia della filosofia I",
+       "docente": "Francesco Patrone",
+       "ects": "10",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Psicologia dello sviluppo II",
+       "docente": "Maria Mirandi",
+       "ects": "5",
+       "semestre": "II",
+       "ssd": "M-PSI/04"
+      },
+      {
+       "corso": "Storia della filosofia II",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "8",
+       "semestre": "II",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Filosofia morale I",
+       "docente": "Alessandro Borghesi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia e teologia in dialogo",
+       "docente": "Declan O'Byrne",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "TH/02"
+      },
+      {
+       "corso": "Idoneità di lingua",
+       "docente": "",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tirocinio Pratico Valutativo",
+       "docente": "",
+       "ects": "10",
+       "semestre": "I-II-III anno",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "71"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia sociale",
+       "docente": "Irene Severi",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-PSI/05"
+      },
+      {
+       "corso": "Psicologia dinamica",
+       "docente": "Maria Mirandi",
+       "ects": "10",
+       "semestre": "I",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Storia della filosofia III",
+       "docente": "Francesco Patrone",
+       "ects": "8",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Teologia sistematica",
+       "docente": "Declan O'Byrne",
+       "ects": "9",
+       "semestre": "I",
+       "ssd": "TH/02"
+      },
+      {
+       "corso": "Ermeneutica biblica I",
+       "docente": "Philippe Van den Heede",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "BIB/05"
+      },
+      {
+       "corso": "Psicopatologia dello sviluppo",
+       "docente": "Maria Mirandi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Ermeneutica biblica II",
+       "docente": "Philippe Van den Heede",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "BIB/05"
+      },
+      {
+       "corso": "Cosmologia e Antropologia",
+       "docente": "Marco Sanchioni",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Corsi Interdisciplinari a scelta",
+       "docente": "",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Corsi Interdisciplinari a scelta",
+       "docente": "",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "62"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Philosophy of Mind I",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Philosophy of Mind II",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Filosofia teoretica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/01"
+      },
+      {
+       "corso": "Ermeneutica filosofica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/01"
+      },
+      {
+       "corso": "Istituzioni di filosofia morale",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia della conoscenza",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/01"
+      },
+      {
+       "corso": "Filosofia politica",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "SPS/01"
+      },
+      {
+       "corso": "Fenomenologia e teoria della percezione",
+       "docente": "Esame sostenuto a UniPg",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/01"
+      },
+      {
+       "corso": "Prova finale",
+       "docente": "",
+       "ects": "3",
+       "semestre": "",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "47"
+    }
+   ],
+   "descrizione": "In convenzione con l'Università degli Studi di Perugia: il terzo anno si svolge presso l'ateneo convenzionato."
+  },
+  {
+   "nome": "Indirizzo filosofico",
+   "doppio_titolo": null,
+   "anni": [
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia generale",
+       "docente": "Irene Severi",
+       "ects": "12",
+       "semestre": "I",
+       "ssd": "M-PSI/01"
+      },
+      {
+       "corso": "Psicologia dello sviluppo I",
+       "docente": "Irene Severi",
+       "ects": "5",
+       "semestre": "I",
+       "ssd": "M-PSI/04"
+      },
+      {
+       "corso": "Logica e filosofia del linguaggio",
+       "docente": "Marco Sanchioni",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Storia della filosofia I",
+       "docente": "Francesco Patrone",
+       "ects": "10",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Psicologia dello sviluppo II",
+       "docente": "Maria Mirandi",
+       "ects": "5",
+       "semestre": "II",
+       "ssd": "M-PSI/04"
+      },
+      {
+       "corso": "Storia della filosofia II",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "8",
+       "semestre": "II",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Filosofia morale I",
+       "docente": "Alessandro Borghesi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia e teologia in dialogo",
+       "docente": "Declan O'Byrne",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "TH/02"
+      },
+      {
+       "corso": "Idoneità di lingua",
+       "docente": "",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Tirocinio Pratico Valutativo",
+       "docente": "",
+       "ects": "10",
+       "semestre": "I-II-III anno",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "71"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Psicologia sociale",
+       "docente": "Irene Severi",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-PSI/05"
+      },
+      {
+       "corso": "Psicologia dinamica",
+       "docente": "Maria Mirandi",
+       "ects": "10",
+       "semestre": "I",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Storia della filosofia III",
+       "docente": "Francesco Patrone",
+       "ects": "8",
+       "semestre": "I",
+       "ssd": "M-FIL/06"
+      },
+      {
+       "corso": "Teologia sistematica",
+       "docente": "Declan O'Byrne",
+       "ects": "9",
+       "semestre": "I",
+       "ssd": "TH/02"
+      },
+      {
+       "corso": "Ermeneutica biblica I",
+       "docente": "Philippe Van den Heede",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "BIB/05"
+      },
+      {
+       "corso": "Psicopatologia dello sviluppo",
+       "docente": "Maria Mirandi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-PSI/07"
+      },
+      {
+       "corso": "Ermeneutica biblica II",
+       "docente": "Philippe Van den Heede",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "BIB/05"
+      },
+      {
+       "corso": "Cosmologia e Antropologia",
+       "docente": "Marco Sanchioni",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/02"
+      },
+      {
+       "corso": "Corsi Interdisciplinari a scelta",
+       "docente": "",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": ""
+      },
+      {
+       "corso": "Corsi Interdisciplinari a scelta",
+       "docente": "",
+       "ects": "4",
+       "semestre": "II",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "62"
+    },
+    {
+     "corsi": [
+      {
+       "corso": "Estetica",
+       "docente": "Cecilia Ricci",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "M-FIL/04"
+      },
+      {
+       "corso": "Filosofia politica I",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "6",
+       "semestre": "I",
+       "ssd": "SPS/01"
+      },
+      {
+       "corso": "Etica, ecologia e ambiente",
+       "docente": "Alessandro Borghesi",
+       "ects": "11",
+       "semestre": "I",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia teoretica e teologia",
+       "docente": "Declan O'Byrne",
+       "ects": "12",
+       "semestre": "II",
+       "ssd": "M-FIL/01"
+      },
+      {
+       "corso": "Filosofia morale II",
+       "docente": "Alessandro Borghesi",
+       "ects": "6",
+       "semestre": "II",
+       "ssd": "M-FIL/03"
+      },
+      {
+       "corso": "Filosofia politica II",
+       "docente": "Andrés Calderón Ramos",
+       "ects": "3",
+       "semestre": "II",
+       "ssd": "SPS/01"
+      },
+      {
+       "corso": "Prova finale",
+       "docente": "",
+       "ects": "3",
+       "semestre": "",
+       "ssd": ""
+      }
+     ],
+     "totale_ects": "47"
+    }
+   ],
+   "descrizione": "Percorso interamente svolto a Sophia, con un terzo anno di approfondimento filosofico e teologico."
+  }
+ ]
+}

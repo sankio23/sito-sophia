@@ -1,0 +1,402 @@
+{
+ "_nota": "Anagrafica dei docenti: è la sorgente delle pagine in docenti/. Categorie e dipartimenti letti dalla pagina ufficiale https://www.sophiauniversity.org/it/docenti/ l'8 agosto 2026. Gli incarichi nel Baccalaureato vengono da dati/piano-baccalaureato.json. Modificare qui e rilanciare genera.py.",
+ "categorie": [
+  {
+   "chiave": "stabili",
+   "etichetta": "Professori stabili",
+   "nota": "I docenti di ruolo dell'Istituto."
+  },
+  {
+   "chiave": "incaricati",
+   "etichetta": "Professori incaricati",
+   "nota": ""
+  },
+  {
+   "chiave": "invitati",
+   "etichetta": "Professori invitati",
+   "nota": ""
+  },
+  {
+   "chiave": "ricercatori",
+   "etichetta": "Ricercatori",
+   "nota": ""
+  },
+  {
+   "chiave": "visiting",
+   "etichetta": "Visiting Professor",
+   "nota": ""
+  },
+  {
+   "chiave": "emeriti",
+   "etichetta": "Professori emeriti e già stabili",
+   "nota": ""
+  },
+  {
+   "chiave": "contratto",
+   "etichetta": "Docenti a contratto",
+   "nota": "Titolari di insegnamento nel piano di studi che non compaiono nell'elenco pubblico dei docenti."
+  }
+ ],
+ "docenti": [
+  {
+   "nome": "Declan O'Byrne",
+   "categoria": "stabili",
+   "ruolo": "Rettore · Professore stabile",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/declan-obyrne/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2022/09/Declan-OByrne-e1662388050396.png",
+   "stato": "confermato",
+   "qualifica": "Professore stabile"
+  },
+  {
+   "nome": "Marco Sanchioni",
+   "categoria": "stabili",
+   "ruolo": "Direttore della Ricerca e della Scuola di Dottorato · Professore stabile",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/marco-sanchioni/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2023/07/Sanchioni_profilo.jpeg",
+   "stato": "confermato",
+   "qualifica": "Professore stabile"
+  },
+  {
+   "nome": "Valentina Gaudiano",
+   "categoria": "stabili",
+   "ruolo": "Professoressa stabile",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/valentina-gaudiano/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2023/02/Valentina-Gaudiano.jpg",
+   "stato": "confermato",
+   "qualifica": "Professoressa stabile"
+  },
+  {
+   "nome": "Philippe Van den Heede",
+   "categoria": "stabili",
+   "ruolo": "Direttore della Biblioteca · Professore stabile",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/philippe-van-den-heede/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2022/11/Philippe-VDH-1024x800.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore stabile"
+  },
+  {
+   "nome": "Daniela Ropelato",
+   "categoria": "stabili",
+   "ruolo": "Professoressa stabile",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/daniela-ropelato/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2023/02/Daniela-Ropelato-768x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professoressa stabile"
+  },
+  {
+   "nome": "Giuseppe Argiolas",
+   "categoria": "stabili",
+   "ruolo": "Professore stabile",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/giuseppe-argiolas/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Giuseppe-Argiolas.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore stabile"
+  },
+  {
+   "nome": "Michele Zanzucchi",
+   "categoria": "incaricati",
+   "ruolo": "Professore incaricato",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/michele-zanzucchi/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Michele-Zanzucchi2-942x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore incaricato"
+  },
+  {
+   "nome": "Antonella Deponte",
+   "categoria": "incaricati",
+   "ruolo": "Professoressa incaricata",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/antonella-deponte/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/IMG_4617.jpg",
+   "stato": "confermato",
+   "qualifica": "Professoressa incaricata"
+  },
+  {
+   "nome": "Marta Genadieva Pancheva",
+   "categoria": "incaricati",
+   "ruolo": "Professoressa incaricata",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/marta-genadieva-pancheva/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2019/07/Dip.EM_Marta.Pancheva-1004x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professoressa incaricata"
+  },
+  {
+   "nome": "Alberto Lo Presti",
+   "categoria": "invitati",
+   "ruolo": "Professore invitato",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/alberto-lo-presti/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Alberto-Lo-Presti.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore invitato"
+  },
+  {
+   "nome": "Pál Tóth",
+   "categoria": "invitati",
+   "ruolo": "Professore invitato",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/pal-toth/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/P%C3%A1l-T%C3%B3th-998x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore invitato"
+  },
+  {
+   "nome": "Pasquale Ferrara",
+   "categoria": "invitati",
+   "ruolo": "Professore invitato",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/pasquale-ferrara/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/09/Pasquale-Ferrara_nuova.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore invitato"
+  },
+  {
+   "nome": "Marco Luppi",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatore",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/marco-luppi/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Marco-Luppi-XX-e1512483272905.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatore"
+  },
+  {
+   "nome": "Licia Paglione",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatrice",
+   "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/licia-paglione/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Licia-Paglione-768x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatrice"
+  },
+  {
+   "nome": "Alessandro Borghesi",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatore",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/alessandro-borghesi/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2026/01/Alessandro-Borghesi_image-1-e1768815249778.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatore"
+  },
+  {
+   "nome": "Francesco Patrone",
+   "categoria": "ricercatori",
+   "ruolo": "Delegato del Rettore per la Didattica · Ricercatore",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/francesco-patrone/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2025/11/Francesco-Patrone.webp",
+   "stato": "confermato",
+   "qualifica": "Ricercatore"
+  },
+  {
+   "nome": "Andrés Calderón Ramos",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatore",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/andres-calderon-ramos/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2026/04/Calderon-Ramos-FOTO-1024x815.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatore"
+  },
+  {
+   "nome": "Maria Mirandi",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatrice",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/maria-mirandi/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2026/01/mirandi-maria.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatrice"
+  },
+  {
+   "nome": "Tommaso Mauri",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatore",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/tommaso-mauri/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2025/08/Tommaso-Mauri-1024px-e1779447128890.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatore"
+  },
+  {
+   "nome": "Niccolò Covoni",
+   "categoria": "ricercatori",
+   "ruolo": "Ricercatore",
+   "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/niccolo-covoni/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2026/07/Covoni-profilo.jpg",
+   "stato": "confermato",
+   "qualifica": "Ricercatore"
+  },
+  {
+   "nome": "Philipp Hu",
+   "categoria": "visiting",
+   "ruolo": "Visiting Professor",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/philipp-hu/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/09/Philippe-Hu.jpg",
+   "stato": "confermato",
+   "qualifica": "Visiting Professor"
+  },
+  {
+   "nome": "Giuseppe Milan",
+   "categoria": "visiting",
+   "ruolo": "Visiting Professor",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/giuseppe-milan/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2020/07/giuseppe-milan-FOTO.jpg",
+   "stato": "confermato",
+   "qualifica": "Visiting Professor"
+  },
+  {
+   "nome": "Stefano Zamagni",
+   "categoria": "visiting",
+   "ruolo": "Visiting Professor",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/stefano-zamagni/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Stefano-Zamagni.jpg",
+   "stato": "confermato",
+   "qualifica": "Visiting Professor"
+  },
+  {
+   "nome": "Fadi Chehadé",
+   "categoria": "visiting",
+   "ruolo": "Visiting Professor",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/fadi-chehade/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2019/08/Fadi-Chehad%C3%A9.jpg",
+   "stato": "confermato",
+   "qualifica": "Visiting Professor"
+  },
+  {
+   "nome": "Gérard Rossé",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/gerard-rosse/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/FullSizeRender-1024x737.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Judith Marie Povilus",
+   "categoria": "emeriti",
+   "ruolo": "Professoressa emerita",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/judith-marie-povilus/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Judith-Povilus2-1024x895.jpg",
+   "stato": "confermato",
+   "qualifica": "Professoressa emerita"
+  },
+  {
+   "nome": "Roberto Catalano",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/roberto-catalano/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/IMG_0572.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Piero Coda",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/piero-coda/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2019/02/foto-Piero-1024x768.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Paul O'Hara",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/paul-ohara/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2023/02/Paul-OHara-768x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Benedetto Gui",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/benedetto-gui/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2023/02/Benedetto-Gui-768x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Antonio Maria Baggio",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/antonio-maria-baggio/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Antonio-Maria-Baggio-1024x768.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Giovanna Maria Porrino",
+   "categoria": "emeriti",
+   "ruolo": "Professoressa emerita",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/giovanna-maria-porrino/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2020/07/Porrino_foto-2022.jpg",
+   "stato": "confermato",
+   "qualifica": "Professoressa emerita"
+  },
+  {
+   "nome": "Bernhard Callebaut",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/bernhard-callebaut/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2023/02/Bennie-Callebaut-768x1024.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Sergio Rondinara",
+   "categoria": "emeriti",
+   "ruolo": "Professore emerito",
+   "dipartimento": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/sergio-rondinara/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/rondinara-e1512482879674.jpg",
+   "stato": "confermato",
+   "qualifica": "Professore emerito"
+  },
+  {
+   "nome": "Irene Severi",
+   "categoria": "contratto",
+   "ruolo": "Docente a contratto",
+   "dipartimento": "",
+   "profilo": "",
+   "foto": "",
+   "stato": "da_confermare",
+   "qualifica": "Docente a contratto"
+  },
+  {
+   "nome": "Cecilia Ricci",
+   "categoria": "contratto",
+   "ruolo": "Docente a contratto",
+   "dipartimento": "",
+   "profilo": "",
+   "foto": "",
+   "stato": "da_confermare",
+   "qualifica": "Docente a contratto"
+  }
+ ]
+}

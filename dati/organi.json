@@ -1,0 +1,63 @@
+{
+ "_nota": "Organi di ateneo. Struttura e titolari letti da https://www.sophiauniversity.org/it/organi-di-ateneo/ l'8 agosto 2026. Le descrizioni sono riassunte; il testo integrale e la composizione nominativa restano sulla pagina ufficiale e negli Statuti.",
+ "gruppi": [
+  {
+   "titolo": "Autorità personali",
+   "nota": "",
+   "voci": [
+    {
+     "nome": "Gran Cancelliere",
+     "persona": "Mons. Gherardo Gambelli, Arcivescovo Metropolita di Firenze",
+     "testo": "Rappresenta la Santa Sede presso l'Istituto e l'Istituto presso la Santa Sede; ne promuove identità, finalità e sviluppo."
+    },
+    {
+     "nome": "Vice Gran Cancelliere",
+     "persona": "Dott.ssa Margaret Karram, Presidente del Movimento dei Focolari",
+     "testo": "Vigila perché l'Istituto si sviluppi in conformità alla propria natura e alle proprie finalità, e sulle scelte compiute dai suoi organi."
+    },
+    {
+     "nome": "Rettore",
+     "persona": "Prof. Declan Joseph O'Byrne",
+     "testo": "Governa e rappresenta l'Istituto, assicurando e promuovendo la comunione fra i membri della comunità accademica. È nominato per un quadriennio, rinnovabile consecutivamente una sola volta."
+    }
+   ]
+  },
+  {
+   "titolo": "Autorità collegiali",
+   "nota": "",
+   "voci": [
+    {
+     "nome": "Senato",
+     "persona": "",
+     "testo": "Convocato e presieduto dal Rettore, riunisce docenti stabili e non stabili, il Direttore della Biblioteca, rappresentanti degli studenti e del personale non docente. Assicura l'esecutività delle decisioni dell'autorità superiore e, con il Rettore, la conservazione dell'unità e delle finalità dell'Istituto."
+    },
+    {
+     "nome": "Consiglio Accademico",
+     "persona": "",
+     "testo": "È l'organo cui compete la gestione didattico-accademica: condivide collegialmente la responsabilità della vita e delle attività dell'Istituto."
+    },
+    {
+     "nome": "Consiglio di Amministrazione",
+     "persona": "",
+     "testo": "Cura la gestione amministrativa ordinaria e straordinaria. Convocato e presieduto dal Rettore, comprende rappresentanti dell'Opera di Maria, due docenti stabili eletti dal Consiglio Accademico e il Presidente della Fondazione «Per Sophia» o un suo delegato."
+    }
+   ]
+  },
+  {
+   "titolo": "Organismi operativi",
+   "nota": "",
+   "voci": [
+    {
+     "nome": "Commissione per la promozione della qualità",
+     "persona": "",
+     "testo": "In conformità alle linee guida dell'Agenzia AVEPRO della Santa Sede, definisce compiti, procedure e obiettivi per la valutazione della qualità della vita universitaria."
+    },
+    {
+     "nome": "Consiglio per la Comunità degli Studenti",
+     "persona": "",
+     "testo": "Promuove e armonizza secondo lo spirito dell'Istituto la vita della comunità studentesca."
+    }
+   ]
+  }
+ ]
+}

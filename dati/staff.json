@@ -1,0 +1,89 @@
+{
+ "_nota": "Staff dell'Istituto. Nomi, fotografie e collegamenti letti da https://www.sophiauniversity.org/it/staff/ l'8 agosto 2026. La pagina ufficiale non specifica l'ufficio di ciascuno: i ruoli qui indicati provengono dalla bozza precedente e dalla pagina Organi di ateneo, e vanno confermati.",
+ "staff": [
+  {
+   "nome": "Amelia Stellino",
+   "ruolo": "Ufficio Progetti e Qualità",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/amelia-stellino/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2020/03/AmeliaStellino.png",
+   "stato": "confermato"
+  },
+  {
+   "nome": "Andrea Giordano",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/andrea-giordano/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2018/06/Andrea_Giordano-908x1024.jpg",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Augusta Maria Petrogalli",
+   "ruolo": "Responsabile amministrativo",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/maria-augusta-petrogalli/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2022/03/Maria-Augusta-Petrogalli-768x1024.jpg",
+   "stato": "confermato"
+  },
+  {
+   "nome": "Cecilia Blackden",
+   "ruolo": "Segreteria Accademica",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/cecilia-blackden/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2021/02/Cecilia-Blackden-1024x752.jpg",
+   "stato": "confermato"
+  },
+  {
+   "nome": "Gazel Tabiola de Guzman",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/gazel-tabiola-de-guzman/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2022/03/Gazel-de-Guzman-709x1024.png",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Giuseppe Pepe",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/giuseppe-pepe/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2019/02/Pepe_Giuseppe.jpeg",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Julie Tremblay",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/julie-tremblay-2/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/Julie-Tremblay2.jpg",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Laura Signore",
+   "ruolo": "Biblioteca",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/laura-signore/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/FullSizeRender-6-1024x983.jpg",
+   "stato": "confermato"
+  },
+  {
+   "nome": "Leonardo Brancaccio",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/leonardo-brancaccio/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2019/02/leonardo-brancaccio.png",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Lucia Paldera",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/lucia-paldera/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/FullSizeRender-5-1011x1024.jpg",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Marcelle Cornu",
+   "ruolo": "",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/marcelle-cornu/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2025/06/Marcelle-Cornu-e1749653714201-797x1024.jpeg",
+   "stato": "da_confermare"
+  },
+  {
+   "nome": "Rosiris Kruger",
+   "ruolo": "Consiglio per la Comunità degli Studenti",
+   "profilo": "https://www.sophiauniversity.org/it/portfolio/rosiris-kruger/",
+   "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/11/Rosiris-2-768x1024.jpg",
+   "stato": "confermato"
+  }
+ ]
+}
