@@ -402,6 +402,7 @@ nav.main .dropdown .dd-label{
 .cards{display:grid;gap:26px}
 .cards.c2{grid-template-columns:repeat(2,1fr)}
 .cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
 .card{
   background:var(--color-surface);border:.5px solid var(--color-border);
   border-radius:var(--radius-lg);padding:30px;position:relative;
@@ -725,7 +726,7 @@ footer.site .bottom a{display:inline;padding:0;color:#9BAABE}
 
   .cols2,.cols2.rev{grid-template-columns:1fr;gap:30px}
   .stats .grid{grid-template-columns:repeat(2,1fr);gap:34px}
-  .cards.c2,.cards.c3,.cgrid,.news-grid,.steps{grid-template-columns:1fr}
+  .cards.c2,.cards.c3,.cards.c4,.cgrid,.news-grid,.steps{grid-template-columns:1fr}
   .form .row{grid-template-columns:1fr}
   footer.site .cols{grid-template-columns:1fr 1fr}
   .people-grid,.people-grid.cols3{grid-template-columns:repeat(2,1fr)}
@@ -793,7 +794,7 @@ footer.site .bottom a{display:inline;padding:0;color:#9BAABE}
 /* marchio dell'ateneo convenzionato nei percorsi in doppio titolo */
 .partner{
   display:inline-flex;align-items:center;gap:14px;
-  padding:9px 20px 9px 11px;border-radius:44px;
+  padding:9px 20px 9px 11px;border-radius:var(--radius-sm);
   background:var(--color-surface);border:.5px solid var(--color-border);
   font-size:14px;line-height:1.35;color:var(--color-text);
   transition:border-color var(--dur-sm) var(--ease),box-shadow var(--dur-sm) var(--ease),
@@ -1102,3 +1103,46 @@ footer.site{view-transition-name:piede}
   content:"";position:absolute;left:2px;right:2px;bottom:2px;height:1.5px;background:currentColor;
 }
 @media(max-width:560px){.azioni-corso .btn{flex:1 1 100%;text-align:center}}
+
+/* ============================================================
+   VOCI — testimonianze dalle brochure ufficiali
+   ============================================================ */
+.voci{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px;margin-top:38px}
+.voce{
+  background:var(--color-surface);border:.5px solid var(--color-border);
+  border-radius:var(--radius-md);padding:28px 26px 26px;
+  display:flex;flex-direction:column;
+  transition:transform var(--dur-md) var(--ease-soft),
+             box-shadow var(--dur-md) var(--ease),
+             border-color var(--dur-md) var(--ease);
+}
+.voce:hover{
+  transform:translateY(-3px);box-shadow:0 14px 34px rgba(21,45,58,.10);
+  border-color:var(--color-border-strong);
+}
+.voce::before{content:"";display:block;width:34px;height:3px;background:var(--color-accent);margin-bottom:18px}
+.voce blockquote{
+  font-family:var(--font-heading);font-size:19px;line-height:1.45;
+  color:var(--color-text);margin:0;flex:1;
+}
+.voce .chi{margin-top:20px;padding-top:14px;border-top:.5px solid var(--color-border)}
+.voce .chi b{display:block;font-size:15px;font-weight:500;color:var(--color-text)}
+.voce .chi span{display:block;font-size:13.5px;color:var(--color-text-muted);line-height:1.4;margin-top:3px}
+
+/* pilastri: perché studiare a Sophia */
+.pilastro h3{font-size:17px;letter-spacing:.02em;margin-bottom:10px}
+.pilastro .num{
+  display:block;font-family:var(--font-heading);font-size:15px;
+  color:var(--color-accent-ink);margin-bottom:8px;font-variant-numeric:tabular-nums;
+}
+
+/* elenchi degli sbocchi nelle schede «Dopo la laurea» */
+.elenco-sbocchi{list-style:none;margin-top:8px}
+.elenco-sbocchi li{
+  position:relative;padding-left:18px;margin-top:6px;
+  font-size:15.5px;color:var(--color-text-body);line-height:1.5;
+}
+.elenco-sbocchi li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:6px;height:6px;border-radius:50%;background:var(--color-accent);
+}
