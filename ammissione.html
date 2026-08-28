@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Ammissione e iscrizione 2026/2027 — Istituto Universitario Sophia</title>
+<meta name="description" content="Come iscriversi a Sophia: requisiti, documenti, scadenze e procedura per il Baccalaureato e la Licenza magistrale. Doppio titolo con l'Università di Perugia.">
+<link rel="canonical" href="https://www.sophiauniversity.org/">
+<link rel="icon" href="loghi/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="loghi/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Istituto Universitario Sophia">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Ammissione e iscrizione 2026/2027">
+<meta property="og:description" content="Istituto Universitario Sophia: un laboratorio di formazione e ricerca dove vita e pensiero, studio ed esperienza si riannodano. Loppiano e Firenze.">
+<meta property="og:url" content="https://www.sophiauniversity.org/">
+<meta property="og:image" content="https://www.sophiauniversity.org/loghi/og-sophia.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="it" href="https://www.sophiauniversity.org/">
+<link rel="alternate" hreflang="en" href="https://www.sophiauniversity.org/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.sophiauniversity.org/">
+<link rel="stylesheet" href="sophia-tokens.css">
+<link rel="stylesheet" href="sophia-site.css">
+<style>
+/* ============================================================
+   Componenti specifici della sezione Ammissione.
+   Consumano soltanto i token di sophia-tokens.css: nessun
+   esadecimale nuovo, nessuna variabile dichiarata qui.
+   ============================================================ */
+
+/* --- barra scadenze, subito sotto l'hero ------------------- */
+.scadenze{
+  background:var(--color-surface-dark);border-top:.5px solid var(--color-border-on-dark);
+  color:var(--color-text-on-dark);padding:18px 0;
+}
+.scadenze .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:14px 34px}
+.scadenze .lab{
+  font-family:var(--font-body);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--color-eyebrow-on-dark);
+}
+.scadenze .scad-voce{display:flex;align-items:baseline;gap:10px;font-size:16px}
+.scadenze .scad-voce b{color:var(--color-text-on-dark-soft);font-weight:500}
+.scadenze .scad-voce span{font-family:var(--font-heading);font-size:20px}
+.scadenze a{color:var(--color-link-on-dark);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+
+/* --- selettore di percorso --------------------------------- */
+.selettore{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 30px}
+.selettore input{position:absolute;opacity:0;pointer-events:none}
+.selettore label{
+  display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  padding:12px 20px;border-radius:30px;font-size:15px;
+  background:var(--color-surface);border:1.5px solid var(--color-border-strong);
+  color:var(--color-text-body);
+  transition:background var(--dur-sm) var(--ease),border-color var(--dur-sm) var(--ease),color var(--dur-sm) var(--ease);
+}
+.selettore label::before{
+  content:"";width:16px;height:16px;border-radius:50%;flex:none;
+  border:1.5px solid var(--color-border-strong);
+  transition:border-color var(--dur-sm) var(--ease),box-shadow var(--dur-sm) var(--ease);
+}
+.selettore input:checked + label{
+  background:var(--color-bg-alt);border-color:var(--sophia-indigo-dark);color:var(--sophia-navy);font-weight:500;
+}
+.selettore input:checked + label::before{
+  border-color:var(--sophia-indigo-dark);box-shadow:inset 0 0 0 4px var(--sophia-indigo-dark);
+}
+.selettore input:focus-visible + label{outline:2px solid var(--color-focus);outline-offset:3px}
+
+/* mostra/nascondi i blocchi legati al percorso scelto */
+[data-corso]{display:none}
+[data-corso].attivo{display:block}
+
+/* --- i sei passi: chi fa cosa e dove ----------------------- */
+.steps.sei{grid-template-columns:repeat(3,1fr)}
+.step .sistema{
+  display:inline-block;font-size:12px;letter-spacing:.04em;
+  padding:4px 11px;border-radius:30px;margin-bottom:12px;
+  border:.5px solid var(--color-border);
+}
+.step .sistema.s-sophia{background:var(--color-bg-alt);color:var(--sophia-indigo-dark)}
+.step .sistema.s-piatt{background:rgba(248,184,21,.16);color:var(--sophia-gold-deep)}
+.step .sistema.s-segr{background:rgba(21,45,58,.07);color:var(--sophia-navy)}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:15px}
+
+/* --- checklist documenti ----------------------------------- */
+.checklist{list-style:none;margin:0;padding:0}
+.checklist li{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:12px 0;border-bottom:.5px solid var(--color-border);font-size:15px;
+  color:var(--color-text-prose);
+}
+.checklist li:last-child{border-bottom:0}
+.checklist .box{
+  flex:none;width:19px;height:19px;margin-top:2px;border-radius:4px;
+  border:1.5px solid var(--color-border-strong);background:var(--color-surface);
+}
+.checklist small{display:block;color:var(--color-text-muted);font-size:13px;margin-top:3px}
+
+/* --- FAQ ---------------------------------------------------- */
+.faq details{border-bottom:.5px solid var(--color-border)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:19px 44px 19px 0;position:relative;
+  font-size:17px;color:var(--sophia-navy);font-weight:500;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:12px;top:50%;width:9px;height:9px;
+  border-right:1.5px solid var(--sophia-indigo-dark);border-bottom:1.5px solid var(--sophia-indigo-dark);
+  transform:translateY(-70%) rotate(45deg);transition:transform var(--dur-sm) var(--ease);
+}
+.faq details[open] summary::after{transform:translateY(-25%) rotate(225deg)}
+.faq summary:focus-visible{outline:2px solid var(--color-focus);outline-offset:2px;border-radius:var(--radius-sm)}
+.faq .risposta{padding:0 0 22px;max-width:72ch;color:var(--color-text-prose);font-size:16px}
+.faq .risposta p + p{margin-top:12px}
+
+/* --- CTA fissa su mobile ------------------------------------ */
+.cta-fissa{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+  background:var(--color-bg-darker);padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  box-shadow:0 -6px 24px rgba(21,45,58,.22);
+  transform:translateY(110%);transition:transform var(--dur-md) var(--ease);
+}
+.cta-fissa.visibile{transform:translateY(0)}
+.cta-fissa .wrap{display:flex;gap:10px;align-items:center}
+.cta-fissa .btn{flex:1;text-align:center}
+.cta-fissa .chiudi{
+  flex:none;width:40px;height:40px;border:0;border-radius:var(--radius-sm);
+  background:transparent;color:var(--color-text-on-dark-muted);font-size:22px;line-height:1;cursor:pointer;
+}
+
+/* --- minuti / dettagli ------------------------------------- */
+.riga-dati{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;list-style:none;padding:0}
+.riga-dati li{font-size:13px;padding:6px 14px;border-radius:30px;background:var(--color-bg-alt);color:var(--sophia-indigo-dark);border:.5px solid var(--color-border)}
+
+@media (max-width:900px){
+  .steps.sei{grid-template-columns:1fr}
+  .scadenze .wrap{flex-direction:column;align-items:flex-start;gap:10px}
+  .cta-fissa{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  .cta-fissa,.faq summary::after,.selettore label{transition:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+<div class="util">
+  <div class="wrap">
+    <div class="lang"><a href="index.html" class="on" lang="it" hreflang="it">IT</a><a href="en/index.html" lang="en" hreflang="en">EN</a></div>
+  </div>
+</div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Istituto Universitario Sophia — home">
+      <img src="loghi/logosophiablue2023.png" alt="Istituto Universitario Sophia" width="160" height="46">
+    </a>
+    <a class="btn btn-gold header-cta" href="ammissione.html">Iscriviti</a>
+    <button class="menu-toggle" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu-principale"><span></span></button>
+    <nav class="main" id="menu-principale" aria-label="Menu principale"><ul>
+      <li class="has-drop"><a href="istituto.html">L'Istituto</a>
+        <div class="dropdown">
+          <a href="istituto.html">Chi siamo</a>
+          <a href="istituto.html#vision">Vision e mission</a>
+          <a href="istituto.html#storia">La nostra storia</a>
+          <a href="campus.html">Vita del campus</a>
+          <a href="docenti.html">Docenti</a>
+          <a href="staff.html">Staff</a>
+          <a href="staff.html#organi">Organi di ateneo</a>
+        </div>
+      </li>
+      <li class="has-drop"><a href="studiare.html">Studiare</a>
+        <div class="dropdown">
+          <span class="dd-label">Futuri studenti</span>
+          <a href="ammissione.html">Ammissione e iscrizione</a>
+          <a href="candidatura.html">Prima di candidarti</a>
+          <a href="studiare.html#rette">Rette e residenze</a>
+          <span class="dd-label">Offerta formativa</span>
+          <a href="offerta.html#baccalaureato">Baccalaureato</a>
+          <a href="offerta.html#magistrale">Licenza magistrale</a>
+          <a href="piano-baccalaureato.html">Piano degli studi</a>
+          <a href="dottorato.html">Dottorato e post-doc</a>
+          <a href="offerta.html#altri-percorsi">Summer School &amp; Web Academy</a>
+        </div>
+      </li>
+      <li class="has-drop"><a href="ricerca.html">Ricerca</a>
+        <div class="dropdown">
+          <a href="ricerca.html">Panoramica</a>
+          <a href="ricerca.html#centri">Centri di ricerca</a>
+          <a href="ricerca.html#linee">Linee di ricerca</a>
+          <a href="ricerca.html#pubblicazioni">Pubblicazioni e rivista</a>
+        </div>
+      </li>
+      <li class="has-drop"><a href="dialogo.html">Dialogo</a>
+        <div class="dropdown">
+          <a href="dialogo.html#cattedre-tematiche">Cattedre tematiche</a>
+          <a href="dialogo.html#cattedre-sophia">Cattedre di Sophia</a>
+          <a href="dialogo.html#formazione">Formazione insegnanti</a>
+          <a href="dialogo.html#webacademy">Sophia Web Academy</a>
+        </div>
+      </li>
+      <li><a href="docenti.html">Docenti</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="sostieni.html">Sostieni</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<!-- ========================= HERO ========================= -->
+<section class="page-hero">
+  <div class="rombo pr1"></div>
+  <div class="rombo pr2"></div>
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="studiare.html">Studiare a Sophia</a><span>›</span>Ammissione e iscrizione</div>
+    <p class="eyebrow light">Ammissione e iscrizione · A.A. 2026/2027</p>
+    <h1>Candidati a Sophia</h1>
+    <p>Un triennio a Firenze e una magistrale a Loppiano, con doppio titolo ecclesiastico e statale. Qui trovi requisiti, documenti, scadenze e la procedura completa, passo per passo.</p>
+    <p style="margin-top:26px">
+      <a class="btn btn-gold" href="#percorso" data-ev="scopri">Scopri come candidarti</a>
+      <a class="btn btn-ghost-light" href="#orientamento" style="margin-left:10px">Parla con un referente</a>
+    </p>
+  </div>
+</section>
+
+<!-- ==================== BARRA SCADENZE ==================== -->
+<div class="scadenze">
+  <div class="wrap">
+    <span class="lab">Scadenze</span>
+    <span class="scad-voce"><b>Studenti UE</b> <span>18 dicembre 2026</span></span>
+    <span class="scad-voce"><b>Studenti extra-UE</b> <span>31 ottobre 2026</span></span>
+    <a href="#faq-extraue">Perché una scadenza anticipata?</a>
+  </div>
+</div>
+
+<!-- ==================== 1. I PERCORSI ===================== -->
+<section id="percorsi">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Primo passo</p>
+      <h2>Quale percorso fa per te</h2>
+      <p>Due corsi di laurea, un unico metodo: didattica in piccoli gruppi, rapporto docenti-studenti di circa 1:5, accompagnamento personale.</p>
+    </div>
+
+    <div class="cards c2" style="margin-top:34px">
+
+      <div class="card">
+        <span class="tag">Laurea triennale · Interclasse L-5 / L-24</span>
+        <h3 style="font-size:22px">Baccalaureato in Filosofia e Scienze Umane</h3>
+        <p><strong>Per chi ha un diploma di scuola secondaria di secondo grado.</strong> Un percorso che intreccia filosofia, psicologia e scienze umane, con tre indirizzi al terzo anno.</p>
+        <ul class="deflist" style="margin-top:18px">
+          <li><b>Durata</b><span>3 anni</span></li>
+          <li><b>Sede</b><span>Firenze · Piazza Tasso 1/A</span></li>
+          <li><b>Lingua</b><span>Italiano</span></li>
+          <li><b>Titolo</b><span>Baccalaureato + Laurea triennale</span></li>
+          <li><b>Retta</b><span>2.500 € l'anno</span></li>
+        </ul>
+        <ul class="riga-dati">
+          <li>Indirizzo in Psicologia · doppio titolo</li>
+          <li>Indirizzo in Filosofia · doppio titolo</li>
+          <li>Indirizzo in Filosofia · percorso Sophia</li>
+        </ul>
+        <p style="margin-top:24px">
+          <a class="btn btn-gold" href="candidatura.html?corso=baccalaureato" data-ev="apply" data-corso-ev="baccalaureato" data-pos="card">Candidati al Baccalaureato</a>
+          <a class="btn btn-ghost" href="offerta.html#baccalaureato" style="margin-left:8px">Il corso in dettaglio</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Laurea magistrale · LM-78 · Licenza pontificia</span>
+        <h3 style="font-size:22px">Licenza in Filosofia, Economia di Comunione e Ambiente</h3>
+        <p><strong>Per chi ha già una laurea triennale.</strong> Filosofia, economia di comunione ed ecologia integrale in dialogo, dentro un'esperienza di vita comunitaria.</p>
+        <ul class="deflist" style="margin-top:18px">
+          <li><b>Durata</b><span>2 anni</span></li>
+          <li><b>Sede</b><span>Campus di Loppiano</span></li>
+          <li><b>Lingua</b><span>Italiano</span></li>
+          <li><b>Titolo</b><span>Licenza + Laurea magistrale</span></li>
+          <li><b>Retta</b><span>2.500 € l'anno</span></li>
+        </ul>
+        <ul class="riga-dati">
+          <li>Vita comunitaria in residenza</li>
+          <li>Docenti e visiting internazionali</li>
+        </ul>
+        <p style="margin-top:24px">
+          <a class="btn btn-gold" href="candidatura.html?corso=licenza" data-ev="apply" data-corso-ev="licenza" data-pos="card">Candidati alla Licenza</a>
+          <a class="btn btn-ghost" href="offerta.html#magistrale" style="margin-left:8px">Il corso in dettaglio</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. REQUISITI ====================== -->
+<section class="stats" id="requisiti">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Secondo passo</p>
+      <h2>Puoi candidarti?</h2>
+      <p>Non è previsto un test di ammissione. Contano il titolo di studio e, per chi non è madrelingua, la conoscenza dell'italiano.</p>
+    </div>
+
+    <div class="selettore" role="radiogroup" aria-label="Scegli il percorso" style="margin-top:30px">
+      <input type="radio" name="corso" id="c-bacc" value="baccalaureato" checked>
+      <label for="c-bacc">Baccalaureato</label>
+      <input type="radio" name="corso" id="c-lic" value="licenza">
+      <label for="c-lic">Licenza magistrale</label>
+    </div>
+
+    <div class="cols2 alto">
+      <div>
+        <div data-corso="baccalaureato" class="attivo">
+          <ul class="checklist">
+            <li><span class="box" aria-hidden="true"></span><span>Diploma di istruzione secondaria di secondo grado, diploma estero equipollente o altro titolo idoneo<small>Ai sensi del DM 270/04, art. 6, commi 1 e 2</small></span></li>
+            <li><span class="box" aria-hidden="true"></span><span>Solo per i non madrelingua: idoneità linguistica per l'italiano di livello B1 o superiore<small>Certificata da un ente accreditato</small></span></li>
+          </ul>
+          <p style="margin-top:20px;font-size:15px;color:var(--color-text-muted)">Puoi presentare la domanda anche se ti diplomi entro l'estate: in quel caso allega un certificato che attesti il percorso in corso e trasmetti il diploma appena disponibile.</p>
+        </div>
+
+        <div data-corso="licenza">
+          <ul class="checklist">
+            <li><span class="box" aria-hidden="true"></span><span>Laurea triennale, Baccalaureato o titolo equipollente<small>La Segreteria valuta la corrispondenza fra gli studi svolti e il piano della Licenza</small></span></li>
+            <li><span class="box" aria-hidden="true"></span><span>Solo per i non madrelingua: idoneità linguistica per l'italiano di livello B1 o superiore<small>Certificata da un ente accreditato</small></span></li>
+          </ul>
+          <p style="margin-top:20px;font-size:15px;color:var(--color-text-muted)">Vieni da un percorso diverso dalla filosofia? Scrivi ad Andrés Calderón Ramos prima di presentare la domanda: verifichiamo insieme se servono integrazioni.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="font-size:20px;margin-bottom:12px">Hai un titolo conseguito all'estero?</h3>
+        <p style="font-size:16px">Scrivici <strong>prima</strong> di presentare la domanda. Verifichiamo insieme l'equipollenza del titolo, il livello di italiano e — se sei cittadino extra-UE — i tempi necessari per le pratiche di ingresso e soggiorno.</p>
+        <p style="margin-top:18px">
+          <a class="btn btn-navy" href="mailto:info@sophiauniversity.org?subject=Titolo%20estero%20—%20verifica%20prima%20della%20candidatura" data-ev="email">Scrivi alla segreteria</a>
+        </p>
+        <p style="margin-top:14px;font-size:14px"><a href="https://wa.me/390559051516" target="_blank" rel="noopener noreferrer" data-ev="whatsapp">Oppure scrivici su WhatsApp →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 3. COME FUNZIONA ====================== -->
+<section id="percorso">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Il percorso</p>
+      <h2>Come funziona la candidatura</h2>
+      <p>Sei passaggi. I primi tre avvengono su questo sito, il quarto sulla piattaforma della Segreteria, gli ultimi due con la Segreteria Didattica.</p>
+    </div>
+
+    <div class="steps sei">
+      <div class="step">
+        <span class="sistema s-sophia">Su questo sito</span>
+        <h3>Scegli il percorso</h3>
+        <p>Baccalaureato o Licenza magistrale. Se hai dubbi, parla con il referente del percorso.</p>
+      </div>
+      <div class="step">
+        <span class="sistema s-sophia">Su questo sito</span>
+        <h3>Verifica i requisiti</h3>
+        <p>Titolo di studio e, per i non madrelingua, la certificazione di italiano B1.</p>
+      </div>
+      <div class="step">
+        <span class="sistema s-sophia">Su questo sito</span>
+        <h3>Prepara i documenti</h3>
+        <p>Quattro file per la domanda. L'elenco completo è nella pagina di preparazione.</p>
+      </div>
+      <div class="step">
+        <span class="sistema s-piatt">Su ScuolaSemplice</span>
+        <h3>Presenta la domanda</h3>
+        <p>Compili il modulo e carichi gli allegati sulla piattaforma della Segreteria di Sophia.</p>
+      </div>
+      <div class="step">
+        <span class="sistema s-piatt">Via email</span>
+        <h3>Ricevi la conferma</h3>
+        <p>Un'email conferma che la domanda è arrivata e indica come procedere.</p>
+      </div>
+      <div class="step">
+        <span class="sistema s-segr">Con la Segreteria</span>
+        <h3>Formalizza l'immatricolazione</h3>
+        <p>Fototessere, ricevuta della prima rata, documento d'identità e i moduli firmati.</p>
+      </div>
+    </div>
+
+    <div class="avviso-dati" style="margin-top:34px">
+      <b>Attenzione.</b> Inviare la domanda su ScuolaSemplice non conclude l'iscrizione. Il sesto passaggio — i documenti alla Segreteria Didattica — è necessario e ha <b>la stessa scadenza</b> della domanda.
+    </div>
+
+    <p style="margin-top:32px">
+      <a class="btn btn-gold" href="candidatura.html" data-ev="apply" data-pos="step">Vai alla domanda online</a>
+    </p>
+  </div>
+</section>
+
+<!-- ================ 4. DOCUMENTI ========================== -->
+<section class="stats" id="documenti">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Terzo passo</p>
+      <h2>Cosa devi preparare</h2>
+      <p>I documenti si dividono in due momenti. Quelli della prima colonna servono subito, quelli della seconda dopo la conferma.</p>
+    </div>
+
+    <div class="cols2" style="margin-top:34px">
+      <div class="value-card">
+        <h3>Per la domanda</h3>
+        <p style="font-size:14px;color:var(--color-text-muted);margin-bottom:8px">Da caricare su ScuolaSemplice</p>
+        <ul class="checklist">
+          <li><span class="box" aria-hidden="true"></span><span>Fotocopia di un documento d'identità</span></li>
+          <li><span class="box" aria-hidden="true"></span><span>Fotocopia del titolo di studio, oppure un certificato che ne attesti il conseguimento</span></li>
+          <li><span class="box" aria-hidden="true"></span><span>Certificato di conoscenza della lingua italiana<small>Solo se non sei madrelingua</small></span></li>
+          <li><span class="box" aria-hidden="true"></span><span>Curriculum vitae</span></li>
+        </ul>
+      </div>
+
+      <div class="value-card">
+        <h3>Per l'immatricolazione</h3>
+        <p style="font-size:14px;color:var(--color-text-muted);margin-bottom:8px">Da far pervenire alla Segreteria Didattica</p>
+        <ul class="checklist">
+          <li><span class="box" aria-hidden="true"></span><span>3 fotografie formato tessera</span></li>
+          <li><span class="box" aria-hidden="true"></span><span>Ricevuta del pagamento della prima rata</span></li>
+          <li><span class="box" aria-hidden="true"></span><span>Copia di un documento d'identità in corso di validità</span></li>
+          <li><span class="box" aria-hidden="true"></span><span>Scheda di immatricolazione, consenso al trattamento dei dati, liberatoria per l'uso delle immagini, dichiarazione di eventuale iscrizione contemporanea ad altra Università</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:26px"><a class="btn btn-ghost" href="candidatura.html" data-ev="prepara">Vedi formati, tempi e moduli da scaricare</a></p>
+  </div>
+</section>
+
+<!-- ================ 5. COSTI ============================== -->
+<section id="costi">
+  <div class="wrap cols2">
+    <div class="prose">
+      <p class="eyebrow">Quanto costa</p>
+      <h2 style="margin-top:8px">Rette e agevolazioni</h2>
+      <p>La retta annuale del Baccalaureato è <strong>di 2.500 euro</strong>, da versare in due rate uguali da 1.250 euro all'inizio dei semestri. È un importo comparabile a quello delle università pubbliche italiane, ed esistono possibilità di borsa di studio.</p>
+      <p><strong>Presentare la domanda non comporta alcun costo.</strong> Le tasse accademiche si versano solo al momento dell'immatricolazione.</p>
+      <p><a href="studiare.html#rette">Rette, borse di studio e agevolazioni →</a><br>
+         <a href="studiare.html#rette">Residenze e alloggi →</a></p>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:20px;margin-bottom:12px">Baccalaureato · A.A. 2026/2027</h3>
+      <ul class="deflist">
+        <li><b>Retta annuale</b><span>2.500 €</span></li>
+        <li><b>Prima rata</b><span>1.250 €</span></li>
+        <li><b>Seconda rata</b><span>1.250 €</span></li>
+        <li><b>Domanda di ammissione</b><span>gratuita</span></li>
+      </ul>
+      <!-- DA CONFERMARE: la ricevuta della prima rata è richiesta entro il 18/12,
+           mentre le rate risultano fissate all'11/01 e al 31/05. Va sciolta
+           l'ambiguità prima della pubblicazione. -->
+      <p class="form-note" style="margin-top:16px">I pagamenti si effettuano tramite bonifico bancario. Coordinate e causale sono indicate nella pagina di preparazione alla domanda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================ 6. ORIENTAMENTO ======================= -->
+<section class="stats" id="orientamento">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Orientamento</p>
+      <h2>Parla con una persona, non con un modulo</h2>
+      <p>A Sophia ogni percorso ha un referente con nome e cognome. Scrivergli prima di candidarti è normale, non è un disturbo — ed è il modo più rapido per capire se il percorso fa per te.</p>
+    </div>
+
+    <div class="cards c2" style="margin-top:34px">
+      <div class="card">
+        <span class="tag">Informazioni generali e supporto alla domanda</span>
+        <h3 style="font-size:20px">Alessandro Borghesi</h3>
+        <p>Per qualsiasi domanda sulla procedura, sulle scadenze e sui documenti.</p>
+        <p style="margin-top:14px">
+          <a class="btn btn-navy" href="mailto:info@sophiauniversity.org" data-ev="email">Scrivi ad Alessandro</a>
+          <a class="btn btn-ghost" href="https://wa.me/390559051516" target="_blank" rel="noopener noreferrer" style="margin-left:8px" data-ev="whatsapp">WhatsApp</a>
+        </p>
+      </div>
+      <div class="card">
+        <span class="tag">Baccalaureato · indirizzo psicologico</span>
+        <h3 style="font-size:20px">Maria Mirandi</h3>
+        <p>Per orientarti sull'indirizzo in Psicologia e sul doppio titolo con Perugia.</p>
+        <p style="margin-top:14px"><a class="btn btn-ghost" href="mailto:maria.mirandi@sophiauniversity.org" data-ev="email">Scrivi a Maria</a></p>
+      </div>
+      <div class="card">
+        <span class="tag">Baccalaureato · indirizzi filosofici</span>
+        <h3 style="font-size:20px">Francesco Patrone</h3>
+        <p>Per orientarti fra i due indirizzi filosofici e i rispettivi sbocchi.</p>
+        <p style="margin-top:14px"><a class="btn btn-ghost" href="mailto:francesco.patrone@sophiauniversity.org" data-ev="email">Scrivi a Francesco</a></p>
+      </div>
+      <div class="card">
+        <span class="tag">Licenza magistrale</span>
+        <h3 style="font-size:20px">Andrés Calderón Ramos</h3>
+        <p>Per il percorso magistrale, la vita in residenza e il riconoscimento dei crediti.</p>
+        <p style="margin-top:14px"><a class="btn btn-ghost" href="mailto:andres.calderonramos@sophiauniversity.org" data-ev="email">Scrivi ad Andrés</a></p>
+      </div>
+    </div>
+
+    <div class="esterno-nota" style="margin-top:30px">
+      Preferisci un colloquio? Un <strong>colloquio di orientamento</strong>, in presenza o online, è possibile in qualsiasi momento e non è un passaggio della procedura di ammissione: serve a te per decidere.
+    </div>
+  </div>
+</section>
+
+<!-- ================ 7. FAQ ================================ -->
+<section id="faq">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <p class="eyebrow">Domande frequenti</p>
+      <h2>Le domande che ci fanno più spesso</h2>
+    </div>
+
+    <div class="faq" style="margin-top:30px">
+
+      <details>
+        <summary>Devo sostenere un test di ammissione?</summary>
+        <div class="risposta"><p>No. L'ammissione si basa sul titolo di studio e, per i non madrelingua, sulla certificazione di italiano. Non è previsto alcun test né una prova selettiva.</p></div>
+      </details>
+
+      <details>
+        <summary>Che differenza c'è fra Baccalaureato e Laurea triennale?</summary>
+        <div class="risposta">
+          <p>Sono due titoli distinti che si conseguono nello stesso percorso. Sophia è un'istituzione accademica eretta dal Dicastero per la Cultura e l'Educazione e rilascia il <strong>Baccalaureato in Filosofia e Scienze Umane</strong>, titolo ecclesiastico.</p>
+          <p>Grazie alla collaborazione con l'Università degli Studi di Perugia è possibile il riconoscimento anche del titolo statale, la <strong>Laurea triennale</strong> interclasse L-5 / L-24 nel sistema universitario italiano. È questo che si intende per «doppio titolo».</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Il doppio titolo vale per tutti gli indirizzi?</summary>
+        <div class="risposta"><p>No. Riguarda l'indirizzo in Psicologia e l'indirizzo in Filosofia in convenzione con Perugia, che prevedono alcuni esami sostenuti presso l'Università degli Studi di Perugia. Il terzo indirizzo, in Filosofia — percorso Sophia, rilascia il solo titolo ecclesiastico.</p></div>
+      </details>
+
+      <details>
+        <summary>Non sono madrelingua italiano: quale certificazione serve?</summary>
+        <div class="risposta"><p>Serve un'idoneità linguistica per l'italiano di livello B1 o superiore, certificata da un ente accreditato. Se non l'hai ancora conseguita ma stai seguendo un corso, scrivici prima di presentare la domanda: valutiamo insieme i tempi.</p></div>
+      </details>
+
+      <details>
+        <summary>Posso candidarmi se mi diplomo o mi laureo dopo la scadenza?</summary>
+        <div class="risposta"><p>Sì. Al posto del titolo puoi allegare un certificato che attesti il percorso in corso, e trasmettere il titolo definitivo appena disponibile. Segnalalo al referente quando presenti la domanda.</p></div>
+      </details>
+
+      <details id="faq-extraue">
+        <summary>Sono cittadino extra-UE: cosa cambia per me?</summary>
+        <div class="risposta">
+          <p>La tua scadenza è anticipata al <strong>31 ottobre 2026</strong>, perché le pratiche di ingresso e soggiorno richiedono tempo e vanno avviate dal tuo Paese.</p>
+          <p>Scrivici <strong>prima</strong> di iniziare: ti indichiamo i passaggi da seguire, i documenti da procurarti e con chi interfacciarti. Non affidarti solo alla procedura online.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Quando saprò se sono stato ammesso?</summary>
+        <!-- DA DEFINIRE CON LA SEGRETERIA: tempo di risposta da dichiarare. -->
+        <div class="risposta"><p>Dopo l'invio della domanda ricevi subito un'email di conferma. La Segreteria verifica la documentazione e ti ricontatta per la formalizzazione dell'immatricolazione. Se non ricevi risposta, scrivi a info@sophiauniversity.org indicando nome, cognome e corso.</p></div>
+      </details>
+
+      <details>
+        <summary>Devo per forza vivere in residenza?</summary>
+        <div class="risposta"><p>No. La vita comunitaria nelle residenze della cittadella di Loppiano è parte integrante dell'esperienza, in particolare per la Licenza magistrale, ma non è un obbligo. Il Baccalaureato ha sede didattica a Firenze, in Piazza Tasso.</p></div>
+      </details>
+
+      <details>
+        <summary>Ci sono borse di studio?</summary>
+        <div class="risposta"><p>Sì, sono previste possibilità di borsa di studio. Le condizioni e le scadenze si richiedono alla Segreteria didattica, che valuta le singole situazioni.</p></div>
+      </details>
+
+      <details>
+        <summary>Posso essere iscritto contemporaneamente a un'altra università?</summary>
+        <div class="risposta"><p>Al momento dell'immatricolazione ti verrà chiesto di compilare una dichiarazione di eventuale iscrizione contemporanea ad altra Università. Se è il tuo caso, segnalalo in anticipo al referente.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================ CTA FINALE ============================ -->
+<section class="band">
+  <div class="wrap">
+    <h2>Pronto a candidarti?</h2>
+    <p>Le iscrizioni per l'A.A. 2026/2027 sono aperte. Bastano circa venti minuti, se hai i documenti pronti.</p>
+    <p style="margin-top:22px">
+      <a class="btn btn-navy" href="candidatura.html?corso=baccalaureato" data-ev="apply" data-corso-ev="baccalaureato" data-pos="finale">Candidati al Baccalaureato</a>
+      <a class="btn btn-navy" href="candidatura.html?corso=licenza" data-ev="apply" data-corso-ev="licenza" data-pos="finale" style="margin-left:10px">Candidati alla Licenza</a>
+    </p>
+    <p style="margin-top:16px;font-size:15px">Hai ancora dubbi? <a href="#orientamento">Parla con un referente</a></p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================ CTA FISSA MOBILE ====================== -->
+<div class="cta-fissa" id="ctaFissa" hidden>
+  <div class="wrap">
+    <a class="btn btn-gold" href="candidatura.html" data-ev="apply" data-pos="sticky">Candidati</a>
+    <button class="chiudi" type="button" aria-label="Nascondi il pulsante">×</button>
+  </div>
+</div>
+
+<footer class="site" id="contatti">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img src="loghi/logosophia2023white.png" alt="Istituto Universitario Sophia" width="146" height="42">
+        <p class="tagline">Un laboratorio di formazione e ricerca per la cultura dell'unità.</p>
+      </div>
+      <nav aria-label="Sedi">
+        <h2>Sedi</h2>
+        <a href="contatti.html">Loppiano · Via San Vito 28 (FI)</a>
+        <a href="contatti.html">Firenze · Piazza Tasso 1/A</a>
+      </nav>
+      <nav aria-label="Percorsi di studio">
+        <h2>Studia</h2>
+        <a href="offerta.html#baccalaureato">Baccalaureato</a>
+        <a href="offerta.html#magistrale">Licenza magistrale</a>
+        <a href="dottorato.html">Dottorato</a>
+        <a href="ammissione.html">Iscrizioni</a>
+      </nav>
+      <nav aria-label="Esplora il sito">
+        <h2>Esplora</h2>
+        <a href="docenti.html">Docenti</a>
+        <a href="staff.html">Staff e organi</a>
+        <a href="ricerca.html">Centri di ricerca</a>
+        <a href="campus.html">Vita del campus</a>
+        <a href="news.html">News ed eventi</a>
+        <a href="sostieni.html">Sostieni Sophia</a>
+        <a href="contatti.html">Contatti</a>
+      </nav>
+    </div>
+    <nav class="social" aria-label="Sophia sui social">
+      <a href="https://www.facebook.com/IstitutoUniversitarioSophia" target="_blank" rel="noopener noreferrer" aria-label="Sophia su Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+      <a href="https://www.instagram.com/sophia.university" target="_blank" rel="noopener noreferrer" aria-label="Sophia su Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
+      <a href="https://twitter.com/istitutosophia" target="_blank" rel="noopener noreferrer" aria-label="Sophia su X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a>
+      <a href="https://www.youtube.com/user/iusophia" target="_blank" rel="noopener noreferrer" aria-label="Sophia su YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://www.linkedin.com/school/istituto-universitario-sophia" target="_blank" rel="noopener noreferrer" aria-label="Sophia su LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    </nav>
+    <div class="bottom">
+      <span>© 2026 Istituto Universitario Sophia · Via San Vito 28, 50064 Figline e Incisa Valdarno (FI) · <a href="mailto:info@sophiauniversity.org">info@sophiauniversity.org</a></span>
+      <span><a href="privacy.html">Privacy</a> · <a href="cookie.html">Cookie</a> · <a href="note-legali.html">Note legali</a></span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"EducationalOccupationalProgram",
+      "name":"Baccalaureato in Filosofia e Scienze Umane",
+      "provider":{"@type":"CollegeOrUniversity","name":"Istituto Universitario Sophia","url":"https://www.sophiauniversity.org/"},
+      "educationalCredentialAwarded":"Baccalaureato / Laurea triennale interclasse L-5 · L-24",
+      "timeToComplete":"P3Y",
+      "educationalProgramMode":"full-time",
+      "applicationDeadline":"2026-12-18",
+      "offers":{"@type":"Offer","price":"2500","priceCurrency":"EUR"},
+      "url":"https://www.sophiauniversity.org/ammissione.html"
+    },
+    {
+      "@type":"EducationalOccupationalProgram",
+      "name":"Licenza in Filosofia, Economia di Comunione e Ambiente",
+      "provider":{"@type":"CollegeOrUniversity","name":"Istituto Universitario Sophia","url":"https://www.sophiauniversity.org/"},
+      "educationalCredentialAwarded":"Licenza / Laurea magistrale LM-78",
+      "timeToComplete":"P2Y",
+      "applicationDeadline":"2026-12-18",
+      "url":"https://www.sophiauniversity.org/ammissione.html"
+    }
+  ]
+}
+</script>
+<script src="sophia-site.js"></script>
+<script>
+/* ============================================================
+   Comportamenti della sezione Ammissione.
+   Nessuna dipendenza esterna. Tutto degrada senza JS.
+   ============================================================ */
+(function(){
+  'use strict';
+  var dl = window.dataLayer = window.dataLayer || [];
+  function ev(nome, dati){ dl.push(Object.assign({event:nome}, dati||{})); }
+
+  /* --- 1. selettore di percorso, con supporto a ?corso= ----- */
+  var radio = document.querySelectorAll('.selettore input[name="corso"]');
+  var blocchi = document.querySelectorAll('[data-corso]');
+
+  function applica(valore, tracciare){
+    blocchi.forEach(function(b){ b.classList.toggle('attivo', b.dataset.corso === valore); });
+    if (tracciare) ev('select_course', {corso: valore});
+  }
+
+  var param = new URLSearchParams(location.search).get('corso');
+  if (param === 'licenza' || param === 'baccalaureato'){
+    var pre = document.querySelector('.selettore input[value="'+param+'"]');
+    if (pre){ pre.checked = true; applica(param, false); }
+  }
+
+  radio.forEach(function(r){
+    r.addEventListener('change', function(){
+      applica(r.value, true);
+      /* la scelta viaggia con i CTA verso la pagina di preparazione */
+      document.querySelectorAll('a[href^="candidatura.html"]').forEach(function(a){
+        if (!a.dataset.corsoEv) a.href = 'candidatura.html?corso=' + r.value;
+      });
+    });
+  });
+
+  /* --- 2. checklist spuntabile ------------------------------ */
+  document.querySelectorAll('.checklist li').forEach(function(li){
+    var box = li.querySelector('.box');
+    if (!box) return;
+    li.setAttribute('role','checkbox');
+    li.setAttribute('aria-checked','false');
+    li.setAttribute('tabindex','0');
+    li.style.cursor = 'pointer';
+    function toggle(){
+      var on = li.getAttribute('aria-checked') === 'true';
+      li.setAttribute('aria-checked', String(!on));
+      box.style.background = !on ? 'var(--color-accent)' : 'var(--color-surface)';
+      box.style.borderColor = !on ? 'var(--color-accent)' : 'var(--color-border-strong)';
+      li.style.opacity = !on ? '.6' : '1';
+      if (!on) ev('checklist_interaction', {voce: li.textContent.trim().slice(0,60)});
+    }
+    li.addEventListener('click', toggle);
+    li.addEventListener('keydown', function(e){
+      if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* --- 3. CTA fissa su mobile ------------------------------- */
+  var cta = document.getElementById('ctaFissa');
+  var chiusa = false;
+  if (cta){
+    cta.hidden = false;
+    cta.querySelector('.chiudi').addEventListener('click', function(){
+      chiusa = true; cta.classList.remove('visibile');
+    });
+    var band = document.querySelector('.band');
+    window.addEventListener('scroll', function(){
+      if (chiusa) return;
+      var oltreSoglia = window.scrollY > window.innerHeight * 0.6;
+      var bandVisibile = band && band.getBoundingClientRect().top < window.innerHeight;
+      cta.classList.toggle('visibile', oltreSoglia && !bandVisibile);
+    }, {passive:true});
+  }
+
+  /* --- 4. eventi analytics ---------------------------------- */
+  ev('view_admission_hub', {});
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-ev]');
+    if (!a) return;
+    var tipo = a.dataset.ev;
+    if (tipo === 'apply') ev('click_apply_cta', {corso: a.dataset.corsoEv || 'non_specificato', posizione: a.dataset.pos || ''});
+    else if (tipo === 'email') ev('click_email', {indirizzo: (a.getAttribute('href')||'').replace('mailto:',''), pagina:'ammissione'});
+    else if (tipo === 'whatsapp') ev('click_whatsapp', {pagina:'ammissione'});
+    else if (tipo === 'scopri') ev('view_process_steps', {origine:'hero'});
+    else if (tipo === 'prepara') ev('click_apply_cta', {corso:'non_specificato', posizione:'documenti'});
+  });
+
+  document.querySelectorAll('.faq details').forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (d.open) ev('view_faq_item', {domanda: d.querySelector('summary').textContent.trim()});
+    });
+  });
+
+  var sezPercorso = document.getElementById('percorso');
+  if (sezPercorso && 'IntersectionObserver' in window){
+    var visto = false;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting && !visto){ visto = true; ev('view_process_steps', {origine:'scroll'}); }
+      });
+    }, {threshold:0.5}).observe(sezPercorso);
+  }
+})();
+</script>
+</body>
+</html>

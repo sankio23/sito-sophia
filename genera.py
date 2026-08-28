@@ -341,7 +341,7 @@ def genera_piano(piano, corsi, docenti):
   <div class="wrap">
     <h2>Vuoi parlarne con qualcuno?</h2>
     <p>I referenti per i futuri studenti rispondono a domande su piano di studi, riconoscimento dei crediti e doppio titolo.</p>
-    <a class="btn btn-navy" href="studiare.html#ammissione">Ammissione e iscrizione</a>
+    <a class="btn btn-navy" href="ammissione.html">Ammissione e iscrizione</a>
   </div>
 </section>'''
     briciole = [('Home', 'index.html'), ('Offerta formativa', 'offerta.html'),
