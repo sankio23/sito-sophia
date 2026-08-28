@@ -19,7 +19,7 @@
   {
    "chiave": "ricercatori",
    "etichetta": "Ricercatori",
-   "nota": ""
+   "nota": "Ricercatori dell'Istituto, molti dei quali con insegnamenti assegnati nei corsi di laurea."
   },
   {
    "chiave": "visiting",
@@ -110,23 +110,23 @@
   },
   {
    "nome": "Antonella Deponte",
-   "categoria": "incaricati",
+   "categoria": "ricercatori",
    "ruolo": "Professoressa incaricata",
    "dipartimento": "Dipartimento di Teologia, Filosofia e Scienze Umane",
    "profilo": "https://www.sophiauniversity.org/it/portfolio/antonella-deponte/",
    "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2017/06/IMG_4617.jpg",
    "stato": "confermato",
-   "qualifica": "Professoressa incaricata"
+   "qualifica": "Ricercatrice"
   },
   {
    "nome": "Marta Genadieva Pancheva",
-   "categoria": "incaricati",
+   "categoria": "ricercatori",
    "ruolo": "Professoressa incaricata",
    "dipartimento": "Dipartimento di Scienze Sociali e Politiche, Economia e Management",
    "profilo": "https://www.sophiauniversity.org/it/portfolio/marta-genadieva-pancheva/",
    "foto": "https://www.sophiauniversity.org/it/wp-content/uploads/2019/07/Dip.EM_Marta.Pancheva-1004x1024.jpg",
    "stato": "confermato",
-   "qualifica": "Professoressa incaricata"
+   "qualifica": "Ricercatrice"
   },
   {
    "nome": "Alberto Lo Presti",
