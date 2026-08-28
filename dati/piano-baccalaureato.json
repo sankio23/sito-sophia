@@ -4,7 +4,7 @@
  "premessa": "Il Baccalaureato in Filosofia e Scienze Umane si articola in tre indirizzi. Due prevedono il doppio titolo in convenzione con l'Università degli Studi di Perugia; il terzo è interamente interno a Sophia.",
  "indirizzi": [
   {
-   "nome": "Indirizzo psicologico",
+   "nome": "Indirizzo in Psicologia",
    "doppio_titolo": "Università degli Studi di Perugia",
    "anni": [
     {
@@ -18,14 +18,14 @@
       },
       {
        "corso": "Psicologia dello sviluppo I",
-       "docente": "Irene Severi",
+       "docente": "Maria Mirandi",
        "ects": "5",
        "semestre": "I",
        "ssd": "M-PSI/04"
       },
       {
        "corso": "Logica e filosofia del linguaggio",
-       "docente": "Marco Sanchioni",
+       "docente": "Niccolò Covoni",
        "ects": "6",
        "semestre": "I",
        "ssd": "M-FIL/02"
@@ -76,7 +76,7 @@
        "corso": "Tirocinio Pratico Valutativo",
        "docente": "Irene Severi; Maria Mirandi",
        "ects": "10",
-       "semestre": "I-II-II anno",
+       "semestre": "I-II-III anno",
        "ssd": ""
       }
      ],
@@ -212,10 +212,10 @@
      "totale_ects": "47"
     }
    ],
-   "descrizione": "In convenzione con l'Università degli Studi di Perugia: il terzo anno si svolge presso l'ateneo convenzionato."
+   "descrizione": "Prevalenza di crediti in area psicologica. Percorso con doppio titolo accademico, con alcuni esami sostenuti presso l’Università degli Studi di Perugia."
   },
   {
-   "nome": "Indirizzo filosofico",
+   "nome": "Indirizzo in Filosofia",
    "doppio_titolo": "Università degli Studi di Perugia",
    "anni": [
     {
@@ -229,14 +229,14 @@
       },
       {
        "corso": "Psicologia dello sviluppo I",
-       "docente": "Irene Severi",
+       "docente": "Maria Mirandi",
        "ects": "5",
        "semestre": "I",
        "ssd": "M-PSI/04"
       },
       {
        "corso": "Logica e filosofia del linguaggio",
-       "docente": "Marco Sanchioni",
+       "docente": "Niccolò Covoni",
        "ects": "6",
        "semestre": "I",
        "ssd": "M-FIL/02"
@@ -437,10 +437,10 @@
      "totale_ects": "47"
     }
    ],
-   "descrizione": "In convenzione con l'Università degli Studi di Perugia: il terzo anno si svolge presso l'ateneo convenzionato."
+   "descrizione": "Prevalenza di crediti in area filosofica. Percorso con doppio titolo accademico, con alcuni esami sostenuti presso l’Università degli Studi di Perugia."
   },
   {
-   "nome": "Indirizzo filosofico",
+   "nome": "Indirizzo in Filosofia — percorso Sophia",
    "doppio_titolo": null,
    "anni": [
     {
@@ -454,14 +454,14 @@
       },
       {
        "corso": "Psicologia dello sviluppo I",
-       "docente": "Irene Severi",
+       "docente": "Maria Mirandi",
        "ects": "5",
        "semestre": "I",
        "ssd": "M-PSI/04"
       },
       {
        "corso": "Logica e filosofia del linguaggio",
-       "docente": "Marco Sanchioni",
+       "docente": "Niccolò Covoni",
        "ects": "6",
        "semestre": "I",
        "ssd": "M-FIL/02"
@@ -648,7 +648,7 @@
      "totale_ects": "47"
     }
    ],
-   "descrizione": "Percorso interamente svolto a Sophia, con un terzo anno di approfondimento filosofico e teologico."
+   "descrizione": "Prevalenza di crediti in ambito filosofico-teologico. Percorso interamente svolto a Sophia."
   }
  ]
 }
