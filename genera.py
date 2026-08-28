@@ -371,7 +371,7 @@ def genera_corso(c, su='../'):
 
     vuoto = lambda t, n: f'''    <section class="da-compilare">
       <h2>{t}</h2>
-      <p>Questa sezione non è ancora stata compilata. {n}</p>
+      <p>Questa sezione non è ancora stata compilata.</p>
     </section>'''
 
     corpo = f'''{intestazione(c['nome'], f"Insegnamento · {area(c['ssd'])}", '', None)}
@@ -438,14 +438,9 @@ def genera_docente(d, su='../'):
     else:
         blocco_corsi = '''      <h2>Insegnamenti</h2>
       <p class="esterno-nota">Non risultano insegnamenti nei piani di studio del
-      Baccalaureato e della Licenza magistrale. Gli incarichi negli altri percorsi
-      non sono ancora stati censiti.</p>'''
+      Baccalaureato e della Licenza magistrale.</p>'''
 
-    avviso = '' if d['stato'] == 'confermato' else '''
-      <p class="avviso-dati"><b>Dati da confermare.</b> Qualifica e dipartimento di
-      questa persona non compaiono nella pagina docenti pubblica, che carica alcune
-      categorie via JavaScript. Gli insegnamenti elencati qui sotto vengono invece
-      dal piano di studi ufficiale.</p>'''
+    avviso = ''
 
     voci = []
     if d['qualifica']: voci.append(f'<li><b>Qualifica</b><span>{esc(d["qualifica"])}</span></li>')
@@ -471,19 +466,19 @@ def genera_docente(d, su='../'):
 {blocco_corsi}
       <section class="da-compilare" style="margin-top:32px">
         <h2>Profilo</h2>
-        <p>Biografia, formazione e percorso accademico: da fornire.</p>
+        <p>Questa sezione non è ancora stata compilata.</p>
       </section>
       <section class="da-compilare">
         <h2>Ricerca</h2>
-        <p>Linee di ricerca, progetti in corso, appartenenza a centri: da fornire.</p>
+        <p>Questa sezione non è ancora stata compilata.</p>
       </section>
       <section class="da-compilare">
         <h2>Pubblicazioni principali</h2>
-        <p>Da fornire, in numero contenuto e con collegamento al testo dove disponibile.</p>
+        <p>Questa sezione non è ancora stata compilata.</p>
       </section>
       <section class="da-compilare">
         <h2>Contatti e ricevimento</h2>
-        <p>Indirizzo istituzionale e orario di ricevimento: da fornire.</p>
+        <p>Questa sezione non è ancora stata compilata.</p>
       </section>
       <p style="margin-top:26px"><a class="btn btn-ghost" href="{su}docenti.html">Tutti i docenti</a></p>
     </div>
@@ -537,11 +532,42 @@ def genera_indice_docenti(docenti, categorie, profondita=0):
         </a>'''
 
     PRE = '../' * profondita
+
+    # In evidenza: chi ha insegnamenti attivi nei corsi di laurea,
+    # con il ruolo accademico tra parentesi. Il raggruppamento per
+    # qualifica resta sotto, per chi non insegna quest'anno.
+    ETICH_SING = {c['chiave']: c.get('singolare') for c in categorie}
+    squadra = sorted((d for d in docenti.values() if d['corsi']),
+                     key=lambda x: x['nome'].split()[-1])
+    con_corsi = {d['slug'] for d in squadra}
+
+    def scheda_squadra(d):
+        foto = (f'<img src="{esc(d["foto"])}" alt="{esc(d["nome"])}" loading="lazy" data-initials="{esc(d["iniziali"])}">'
+                if d['foto'] else f'<span class="avatar-fallback" aria-hidden="true">{esc(d["iniziali"])}</span>')
+        n = len(d['corsi'])
+        return f'''        <a class="person" href="{PRE}docenti/{d['slug']}.html">
+          <div class="photo">{foto}</div>
+          <h3>{esc(d['nome'])}</h3>
+          <div class="role">({esc(d['qualifica'] or 'Docente')})</div>
+          <div class="dept">{n} {'insegnamento' if n == 1 else 'insegnamenti'}</div>
+        </a>'''
+
+    filtri = [f'<a href="#squadra">Con insegnamenti <span>{len(squadra)}</span></a>']
+    sezioni = f'''
+      <section class="people-section" id="squadra">
+        <h2>Chi insegna nell'A.A. 2026/2027</h2>
+        <p class="sub">I docenti titolari di insegnamento nel Baccalaureato e nella Licenza magistrale, con il ruolo accademico tra parentesi.</p>
+        <div class="people-grid">
+{''.join(scheda_squadra(d) for d in squadra)}
+        </div>
+      </section>'''
+
     per_cat = {}
     for d in docenti.values():
+        if d['slug'] in con_corsi:
+            continue
         per_cat.setdefault(d['categoria'], []).append(d)
 
-    filtri, sezioni = [], ''
     for cat in categorie:
         k = cat['chiave']
         gruppo = sorted(per_cat.get(k, []), key=lambda x: x['nome'].split()[-1])
@@ -558,7 +584,7 @@ def genera_indice_docenti(docenti, categorie, profondita=0):
       </section>'''
 
     corpo = f'''{intestazione('Docenti', 'Persone',
-        f'{len(docenti)} docenti, divisi per qualifica. Ogni scheda raccoglie il profilo e gli insegnamenti di cui la persona è titolare.', None)}
+        f"{len(docenti)} docenti. In apertura chi insegna nei corsi di laurea di quest’anno; a seguire il resto del corpo accademico, per qualifica.", None)}
 
 <nav class="indice-categorie" aria-label="Categorie di docenti">
   <div class="wrap">{''.join(filtri)}</div>
@@ -569,7 +595,7 @@ def genera_indice_docenti(docenti, categorie, profondita=0):
   </div>
 </section>'''
     return pagina(profondita, 'Docenti',
-                  "I docenti dell'Istituto Universitario Sophia, divisi per qualifica, con i rispettivi insegnamenti.",
+                  "I docenti dell'Istituto Universitario Sophia: chi insegna nei corsi di laurea e il corpo accademico, con i rispettivi insegnamenti.",
                   [('Home', 'index.html'), ('Docenti', None)], corpo)
 
 
