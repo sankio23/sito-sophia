@@ -140,14 +140,7 @@
       <p style="margin-bottom:6px;max-width:70ch">Compila i campi qui sotto: alla conferma il modulo ufficiale di adesione viene generato <b>già compilato</b> e scaricato sul tuo dispositivo. Dovrai solo aggiungere luogo, data e firma, e rispedirlo insieme alla ricevuta del versamento.</p>
       <p class="form-note" style="margin-bottom:22px;max-width:70ch">Una copia della richiesta, con il modulo allegato, arriva alla Fondazione e all'indirizzo email che ci lasci.</p>
 
-      <form class="form modulo-lungo" id="modulo-adesione" action="https://formsubmit.co/fondazione@sophiauniversity.org" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="Modulo di adesione — Fondazione «Per Sophia» ETS">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_cc" value="">
-        <input type="hidden" name="_next" value="https://sankio23.github.io/sito-sophia/fondazione/grazie.html">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <input type="file" id="ad-allegato" name="attachment" style="display:none" tabindex="-1" aria-hidden="true">
+      <form class="form modulo-lungo" id="modulo-adesione" action="#" method="POST" novalidate>
 
         <fieldset>
           <legend>I tuoi dati</legend>
@@ -242,7 +235,6 @@
         <p style="font-size:15.5px;margin-top:12px">Una copia è già arrivata alla Fondazione e all'indirizzo email che ci hai lasciato.</p>
         <p style="margin-top:16px"><a class="btn btn-ghost" id="modulo-riscarica" href="#" hidden download>Scarica di nuovo il modulo</a></p>
       </div>
-      <iframe name="fps-invio" title="Invio del modulo" style="display:none" width="0" height="0"></iframe>
     </div>
   </div>
 </section>
@@ -353,6 +345,7 @@
   </div>
 </footer>
 
+<script src="../js/config.js"></script>
 <script src="../js/pdf-lib.min.js"></script>
 <script src="../sophia-site.js"></script>
 <script src="../sophia-modulo.js"></script>

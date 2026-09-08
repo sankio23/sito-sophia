@@ -1,9 +1,8 @@
 /* Modulo di adesione alla Fondazione «Per Sophia» ETS.
    Alla conferma: compila nel browser il PDF ufficiale (media/Modulo-di-adesione…pdf,
-   che è un modulo PDF con campi), lo scarica sul dispositivo di chi lo compila e lo
-   allega alla mail che parte verso la Fondazione e, in copia, verso chi ha compilato.
-   Senza JavaScript il modulo resta un normale invio: i dati arrivano lo stesso,
-   soltanto senza il PDF già compilato. */
+   che è un modulo PDF con campi), lo scarica sul dispositivo di chi compila e lo
+   manda al servizio della Fondazione (Apps Script, vedi js/config.js), che invia
+   due email: una a chi ha aderito e una alla Fondazione, con il modulo allegato. */
 (function () {
   'use strict';
 
@@ -15,15 +14,17 @@
   var avviso = document.getElementById('modulo-avviso');
   var fatto = document.getElementById('modulo-fatto');
   var scaricaDiNuovo = document.getElementById('modulo-riscarica');
-  var allegato = document.getElementById('ad-allegato');
-
-  /* con JavaScript la risposta di FormSubmit finisce in una cornice nascosta:
-     la pagina non si sposta e il download appena avviato non viene interrotto. */
-  form.target = 'fps-invio';
 
   function val(nome) {
     var c = form.elements[nome];
     return c ? String(c.value || '').trim() : '';
+  }
+
+  function testo(nome) {
+    var c = form.elements[nome];
+    if (!c) return '';
+    if (c.tagName === 'SELECT' && c.selectedIndex >= 0) return c.options[c.selectedIndex].text;
+    return String(c.value || '').trim();
   }
 
   function data(iso) {
@@ -42,6 +43,10 @@
       .replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
+  function unisci(pezzi, sep) {
+    return pezzi.filter(function (x) { return x; }).join(sep || ' ');
+  }
+
   async function componiPdf() {
     var risposta = await fetch(MODELLO, { cache: 'no-cache' });
     if (!risposta.ok) throw new Error('modello non raggiungibile');
@@ -56,7 +61,7 @@
       try { campi.getCheckBox(nome).check(); } catch (e) {}
     }
 
-    scrivi('nome_cognome', (val('Nome') + ' ' + val('Cognome')).trim());
+    scrivi('nome_cognome', unisci([val('Nome'), val('Cognome')]));
     scrivi('nato_a', val('Luogo di nascita'));
     scrivi('nato_il', data(val('Data di nascita')));
     scrivi('residenza', val('Comune'));
@@ -98,19 +103,26 @@
     return await pdf.save();
   }
 
+  function base64(byte) {
+    var s = '', blocco = 0x8000;
+    for (var i = 0; i < byte.length; i += blocco) {
+      s += String.fromCharCode.apply(null, byte.subarray(i, i + blocco));
+    }
+    return btoa(s);
+  }
+
   function scarica(blob, nome) {
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url; a.download = nome; a.style.display = 'none';
     document.body.appendChild(a); a.click(); a.remove();
     if (scaricaDiNuovo) { scaricaDiNuovo.href = url; scaricaDiNuovo.download = nome; scaricaDiNuovo.hidden = false; }
-    setTimeout(function () { if (!scaricaDiNuovo) URL.revokeObjectURL(url); }, 120000);
   }
 
-  function messaggio(testo, errore) {
+  function messaggio(t, errore) {
     if (!avviso) return;
     avviso.hidden = false;
-    avviso.textContent = testo;
+    avviso.textContent = t;
     avviso.className = errore ? 'form-note form-note--errore' : 'form-note';
   }
 
@@ -119,37 +131,68 @@
     if (fatto) { fatto.hidden = false; fatto.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
   }
 
+  function carico(pdfB64, nomeFile) {
+    return {
+      nome: val('Nome'),
+      cognome: val('Cognome'),
+      email: val('Email'),
+      telefono: val('Telefono'),
+      nato: unisci([val('Luogo di nascita'), data(val('Data di nascita'))], ', '),
+      cf: val('Codice fiscale').toUpperCase(),
+      residenza: unisci([
+        unisci([val('Indirizzo'), val('Numero civico')]),
+        unisci([val('CAP'), val('Comune')]),
+        val('Provincia') ? '(' + val('Provincia') + ')' : '',
+        val('Nazione')
+      ], ' — '),
+      ente: val('Ente'),
+      ruoloEnte: val('Ruolo nell ente'),
+      tipo: val('Tipo di adesione'),
+      tipoEsteso: testo('Tipo di adesione'),
+      importo: importo(val('Importo annuo')),
+      anni: val('Anni di versamento'),
+      destinazione: testo('Destinazione'),
+      obiettivo: val('Obiettivo specifico'),
+      messaggio: val('Messaggio'),
+      pdf: pdfB64,
+      pdfNome: nomeFile
+    };
+  }
+
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     if (!form.reportValidity()) return;
 
     bottone.disabled = true;
-    var etichetta = bottone.textContent;
     bottone.textContent = 'Preparo il modulo…';
     messaggio('Sto compilando il modulo di adesione…');
 
-    /* l'indirizzo di chi compila riceve copia della stessa mail, con il PDF allegato */
-    var copia = form.elements['_cc'];
-    if (copia) copia.value = val('Email');
+    var nomeFile = 'Modulo-adesione-' + (pulisci(val('Cognome')) || 'Fondazione-per-Sophia') + '.pdf';
 
-    var lavoro = (typeof PDFLib === 'undefined')
+    (typeof PDFLib === 'undefined'
       ? Promise.reject(new Error('pdf-lib non disponibile'))
-      : componiPdf();
-
-    lavoro.then(function (byte) {
-      var blob = new Blob([byte], { type: 'application/pdf' });
-      var nome = 'Modulo-adesione-' + (pulisci(val('Cognome')) || 'Fondazione-per-Sophia') + '.pdf';
-      scarica(blob, nome);
-      try {
-        var dt = new DataTransfer();
-        dt.items.add(new File([blob], nome, { type: 'application/pdf' }));
-        allegato.files = dt.files;
-      } catch (e) { /* qualche browser non lo consente: la mail parte senza allegato */ }
+      : componiPdf()
+    ).then(function (byte) {
+      scarica(new Blob([byte], { type: 'application/pdf' }), nomeFile);
+      return base64(byte);
     }).catch(function (e) {
       if (window.console) console.warn('[modulo] PDF non generato:', e);
-    }).then(function () {
-      form.submit();
-      setTimeout(concludi, 400);
+      return '';
+    }).then(function (pdfB64) {
+      var url = (typeof BACKEND_URL !== 'undefined') ? BACKEND_URL : '';
+      if (!url) {
+        messaggio('Il modulo è stato scaricato, ma l\'invio automatico non è ancora attivo: '
+          + 'mandalo firmato a fondazione@sophiauniversity.org.', true);
+        bottone.disabled = false;
+        bottone.textContent = 'Genera il modulo e invia';
+        return;
+      }
+      return fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(carico(pdfB64, nomeFile))
+      }).catch(function () {}).then(concludi);
     });
   });
 })();
