@@ -85,7 +85,7 @@
       </li>
       <li><a href="../docenti.html">Docenti</a></li>
       <li><a href="../news.html">News</a></li>
-      <li class="has-drop"><a href="../fondazione/index.html">Fondazione</a>
+      <li class="has-drop nav-sostieni"><a href="../fondazione/index.html"><img class="nav-sostieni-icona" src="../loghi/logo-fondazione.png" alt="" width="20" height="20">Sostieni</a>
         <div class="dropdown">
           <a href="../fondazione/index.html">La Fondazione per Sophia</a>
           <a href="../fondazione/organi.html">Organi e trasparenza</a>
@@ -134,7 +134,40 @@
         <p>Persone fisiche o giuridiche, pubbliche o private, ed enti che sostengono le attività della Fondazione con contributi annuali o pluriennali. La qualifica di partecipante dura per tutto l'anno solare in cui il contributo è stato versato.</p>
       </div>
     </div>
-    <p class="da-compilare" style="margin-top:26px">Il modulo di adesione è in aggiornamento: per riceverlo scrivi a <a href="mailto:fondazione@sophiauniversity.org?subject=Richiesta%20modulo%20di%20adesione">fondazione@sophiauniversity.org</a>.</p>
+    <div id="adesione" style="margin-top:44px;max-width:720px">
+      <p class="eyebrow">Modulo di adesione</p>
+      <h3 style="font-size:24px;margin:8px 0 10px">Chiedi di partecipare</h3>
+      <p style="margin-bottom:20px">Compila il modulo: la richiesta arriva direttamente alla Fondazione, che ti ricontatta per completare l'adesione. Nulla di ciò che invii ti vincola.</p>
+      <form class="form" action="https://formsubmit.co/fondazione@sophiauniversity.org" method="POST">
+        <input type="hidden" name="_subject" value="Richiesta di adesione — Fondazione per Sophia ETS">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://sankio23.github.io/sito-sophia/fondazione/grazie.html">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <div class="field"><label for="ad-nome">Nome <span class="req" aria-hidden="true">*</span></label><input id="ad-nome" name="Nome" type="text" autocomplete="given-name" required placeholder="Il tuo nome"></div>
+          <div class="field"><label for="ad-cognome">Cognome <span class="req" aria-hidden="true">*</span></label><input id="ad-cognome" name="Cognome" type="text" autocomplete="family-name" required placeholder="Il tuo cognome"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="ad-email">Email <span class="req" aria-hidden="true">*</span></label><input id="ad-email" name="Email" type="email" autocomplete="email" required placeholder="nome@email.com"></div>
+          <div class="field"><label for="ad-tel">Telefono</label><input id="ad-tel" name="Telefono" type="tel" autocomplete="tel" placeholder="+39 ..."></div>
+        </div>
+        <div class="field"><label for="ad-ente">Ente o organizzazione (se l'adesione non è a titolo personale)</label><input id="ad-ente" name="Ente" type="text" autocomplete="organization" placeholder="Nome dell'ente"></div>
+        <div class="field"><label for="ad-tipo">Vorrei aderire come</label>
+          <select id="ad-tipo" name="Tipo di adesione">
+            <option value="Aderente">Aderente (da 500 € l'anno)</option>
+            <option value="Sovventore">Sovventore (da 10.000 € l'anno)</option>
+            <option value="Non so ancora">Non so ancora, vorrei parlarne</option>
+          </select>
+        </div>
+        <div class="field"><label for="ad-msg">Messaggio</label><textarea id="ad-msg" name="Messaggio" placeholder="Scrivi qui, se vuoi aggiungere qualcosa"></textarea></div>
+        <div class="field consent">
+          <input id="ad-consenso" name="Consenso privacy" type="checkbox" value="sì" required>
+          <label for="ad-consenso">Ho letto l'<a href="../privacy.html">informativa sulla privacy</a> e acconsento al trattamento dei miei dati per rispondere a questa richiesta. <span class="req" aria-hidden="true">*</span></label>
+        </div>
+        <div><button class="btn btn-navy" type="submit">Invia la richiesta</button></div>
+        <p class="form-note">In alternativa puoi scrivere a <a href="mailto:fondazione@sophiauniversity.org?subject=Richiesta%20di%20adesione">fondazione@sophiauniversity.org</a>.</p>
+      </form>
+    </div>
   </div>
 </section>
 
