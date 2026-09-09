@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /stampa/
+
+Sitemap: https://www.sophiauniversity.org/sitemap.xml

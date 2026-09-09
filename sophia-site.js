@@ -350,3 +350,19 @@
     });
   });
 })();
+
+/* Barra di sezione: su telefono le voci stanno su una riga sola che
+   scorre col dito. Portiamo in vista la voce della pagina corrente, così
+   non sembra che la barra cominci sempre da «La Fondazione». */
+(function () {
+  var voci = document.querySelector('.fond-voci, .sez-voci');
+  if (!voci) return;
+  var attiva = voci.querySelector('a[aria-current="page"]');
+  if (!attiva) return;
+  function allinea() {
+    if (voci.scrollWidth <= voci.clientWidth + 4) { voci.scrollLeft = 0; return; }
+    voci.scrollLeft = Math.max(0, attiva.offsetLeft - 20);
+  }
+  allinea();
+  window.addEventListener('resize', allinea);
+})();

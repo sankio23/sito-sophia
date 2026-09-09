@@ -78,6 +78,18 @@ PY
 E toglierlo anche da `genera.py` (una riga, subito dopo `<meta charset`) e da
 `index.html`, altrimenti la prima rigenerazione lo rimette.
 
+Poi rigenerare la mappa del sito, che porta le date di ultima modifica:
+
+```bash
+python3 strumenti/mappa.py
+```
+
+Infine, su Google Search Console: aggiungere la proprietà del dominio e
+indicare `https://www.sophiauniversity.org/sitemap.xml`. Le copie per la
+stampa in `stampa/` restano fuori dagli indici: il loro `noindex` è scritto
+in modo diverso apposta, così lo script qui sopra non lo rimuove.
+
+
 ## Alternativa in un minuto, se serve solo un'occhiata veloce
 
 [app.netlify.com/drop](https://app.netlify.com/drop): trascini la cartella

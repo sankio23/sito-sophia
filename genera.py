@@ -15,10 +15,13 @@ Produce:
     corsi/index.html      corsi/<slug>.html
     docenti/index.html    docenti/<slug>.html
 """
-import json, re, os, unicodedata, html
+import json, re, os, sys, unicodedata, html
 from collections import defaultdict
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(BASE, 'strumenti'))
+from barre import barra          # la barra di sezione sotto l'intestazione
+from canonici import sistema     # indirizzo canonico giusto per ogni pagina
 DATI = os.path.join(BASE, 'dati')
 
 # ---------------------------------------------------------------- utilità
@@ -78,14 +81,57 @@ def guscio(profondita):
     return testa, piede, su
 
 
-def pagina(profondita, titolo, descrizione, briciole, corpo, classe=''):
+# ------------------------------------------------------- dati strutturati
+# Google legge queste schede per capire che cosa è una pagina: un corso, una
+# persona, un percorso di laurea. Senza, deve indovinare dal testo.
+
+SITO_URL = 'https://www.sophiauniversity.org/'
+
+ENTE = {
+    '@type': 'CollegeOrUniversity',
+    'name': 'Istituto Universitario Sophia',
+    'alternateName': 'Sophia University Institute',
+    'url': SITO_URL,
+}
+
+
+def schede_json(blocchi):
+    """Una o più schede schema.org, pronte da infilare nel <head>."""
+    blocchi = [b for b in blocchi if b]
+    if not blocchi:
+        return ''
+    dati = blocchi[0] if len(blocchi) == 1 else blocchi
+    testo = json.dumps(dati, ensure_ascii=False, indent=None)
+    testo = testo.replace('</', '<\\/')      # non deve chiudere lo <script>
+    return '<script type="application/ld+json">%s</script>\n' % testo
+
+
+def briciole_json(briciole, su):
+    voci = []
+    for n, (titolo, url) in enumerate(briciole, 1):
+        v = {'@type': 'ListItem', 'position': n, 'name': titolo}
+        if url:
+            v['item'] = SITO_URL + ('' if url == 'index.html' else url)
+        voci.append(v)
+    return {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': voci}
+
+
+def pagina(profondita, titolo, descrizione, briciole, corpo, classe='',
+           sezione=None, corrente='', titolo_pagina=None, schema=None):
     testa, piede, su = guscio(profondita)
-    testa = re.sub(r'<title>.*?</title>', f'<title>{esc(titolo)} — Istituto Universitario Sophia</title>',
+    t_scheda = titolo_pagina or f'{titolo} — Istituto Universitario Sophia'
+    testa = re.sub(r'<title>.*?</title>', f'<title>{esc(t_scheda)}</title>',
                    testa, flags=re.S)
     testa = re.sub(r'(name="description" content=")[^"]*(")',
                    lambda m: m.group(1) + esc(descrizione) + m.group(2), testa, count=1)
     testa = re.sub(r'(<meta property="og:title" content=")[^"]*(")',
                    lambda m: m.group(1) + esc(titolo) + m.group(2), testa)
+    # l'anteprima social deve descrivere questa pagina, non sempre la home
+    testa = re.sub(r'(<meta property="og:description" content=")[^"]*(")',
+                   lambda m: m.group(1) + esc(descrizione) + m.group(2), testa, count=1)
+    # le versioni in altra lingua esistono solo per la home: altrove l'hreflang
+    # dichiarava il falso, dicendo che l'originale italiano è la home
+    testa = re.sub(r'\n<link rel="alternate" hreflang="[^"]*" href="[^"]*">', '', testa)
     bric = ' <span aria-hidden="true">·</span> '.join(
         (f'<a href="{su}{u}">{esc(t)}</a>' if u else f'<span aria-current="page">{esc(t)}</span>')
         for t, u in briciole)
@@ -93,7 +139,10 @@ def pagina(profondita, titolo, descrizione, briciole, corpo, classe=''):
     # documento e lo script del sito vanno riaggiunti qui, o le pagine
     # generate resterebbero senza menu mobile, senza aria-current e senza
     # i ripieghi delle immagini.
-    return f'''{testa}
+    schede = [briciole_json(briciole, su)] + list(schema or [])
+    testa = testa.replace('</head>', schede_json(schede) + '</head>', 1)
+    barra_html = ('\n\n' + barra(sezione, corrente, su)) if sezione else ''
+    return f'''{testa}{barra_html}
 
 <main id="contenuto" class="{classe}">
 {corpo}
@@ -299,6 +348,11 @@ def genera_piano(piano, corsi, docenti):
       </ol>
     </section>'''
         badge = partner(ind['doppio_titolo'], su)
+        scopri = ''
+        if ind['nome'] in INDIRIZZI_PAGINA:
+            scopri = ('<p class="scarica-pdf" style="margin-top:22px">'
+                      '<a class="btn btn-navy" href="%s%s">Scopri questo indirizzo →</a></p>'
+                      % (su, INDIRIZZI_PAGINA[ind['nome']]['file']))
         schede += f'''
   <section class="indirizzo" id="{ind['slug']}">
     <div class="wrap">
@@ -311,6 +365,7 @@ def genera_piano(piano, corsi, docenti):
         <p class="grande-num"><b>{ind['totale_ects']}</b><small>ECTS complessivi</small></p>
       </div>
       {anni}
+      {scopri}
     </div>
   </section>'''
 
@@ -346,10 +401,215 @@ def genera_piano(piano, corsi, docenti):
 </section>'''
     briciole = [('Home', 'index.html'), ('Offerta formativa', 'offerta.html'),
                 (meta['breve'], None)]
+    scheda_piano = {
+        '@context': 'https://schema.org', '@type': 'EducationalOccupationalProgram',
+        'name': piano['titolo'], 'description': piano['premessa'],
+        'url': SITO_URL + meta['pagina'], 'provider': ENTE, 'inLanguage': 'it',
+        'educationalProgramMode': 'full-time',
+        'timeToComplete': 'P3Y' if meta['chiave'] == 'baccalaureato' else 'P2Y',
+    }
     tot = piano['indirizzi'][0]['totale_ects']
     return pagina(0, piano['titolo'],
                   f"Piano degli studi: {len(piano['indirizzi'])} percorsi, {tot} ECTS, con doppio titolo in convenzione con l'Università degli Studi di Perugia.",
-                  briciole, corpo, 'piano')
+                  briciole, corpo, 'piano',
+                  sezione='studiare', corrente=piano['meta']['pagina'],
+                  schema=[scheda_piano])
+
+
+# ---------------------------------------------------------- pagine indirizzo
+# Un indirizzo non aveva una pagina propria: viveva come paragrafo dentro il
+# piano di studi. Chi cerca «studiare psicologia a Firenze» non poteva
+# trovarci, perché la pagina che risponde a quella domanda non esisteva.
+
+INDIRIZZI_PAGINA = {
+    'Indirizzo in Psicologia': {
+        'file': 'indirizzo-psicologia.html',
+        'h1': 'Studiare Psicologia a Firenze',
+        'titolo_scheda': 'Studiare Psicologia a Firenze — Istituto Universitario Sophia',
+        'descrizione': ('Il Baccalaureato con indirizzo in Psicologia a Firenze: doppio titolo con '
+                        "l'Università degli Studi di Perugia, 180 ECTS in tre anni, classi ridotte."),
+        'sommario': ('Tre anni a Firenze, con il doppio titolo dell\u2019Università degli Studi di '
+                     'Perugia: una formazione psicologica costruita dentro una domanda più ampia '
+                     'sulla persona.'),
+    },
+    'Indirizzo in Filosofia': {
+        'file': 'indirizzo-filosofia.html',
+        'h1': 'Studiare Filosofia a Firenze',
+        'titolo_scheda': 'Studiare Filosofia a Firenze — Istituto Universitario Sophia',
+        'descrizione': ('Il Baccalaureato con indirizzo in Filosofia a Firenze: doppio titolo con '
+                        "l'Università degli Studi di Perugia, 180 ECTS in tre anni, classi ridotte."),
+        'sommario': ('Tre anni a Firenze, con il doppio titolo dell\u2019Università degli Studi di '
+                     'Perugia: la filosofia come esercizio del pensiero e come pratica di dialogo.'),
+    },
+    'Indirizzo in Filosofia — percorso Sophia': {
+        'file': 'indirizzo-filosofia-sophia.html',
+        'h1': 'Filosofia e teologia: il percorso Sophia',
+        'titolo_scheda': 'Filosofia e teologia, il percorso Sophia — Istituto Universitario Sophia',
+        'descrizione': ('Il Baccalaureato interamente svolto a Sophia, con prevalenza di crediti in '
+                        'ambito filosofico-teologico: 180 ECTS in tre anni, a Firenze e a Loppiano.'),
+        'sommario': ('Un percorso interamente interno a Sophia, dove la filosofia si intreccia con '
+                     'la teologia e con la vita della comunità accademica.'),
+    },
+}
+
+
+def blocco_dove():
+    # NOTA INTERNA: da confermare con la Segreteria come si distribuiscono le
+    # lezioni fra la sede di Firenze e il campus di Loppiano, e correggere qui.
+    return '''
+<section class="stats">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Dove si studia</p><h2>A Firenze, dentro una comunità</h2></div>
+    <div class="cards c2" style="margin-top:30px">
+      <div class="card">
+        <h3 style="font-size:20px">La sede di Firenze</h3>
+        <p>Dall\u2019anno accademico 2026/2027 il Baccalaureato si tiene nella sede di Firenze,
+        in Piazza Tasso 1/A, a pochi passi dal centro.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:20px">Il campus di Loppiano</h3>
+        <p>A trenta chilometri dalla città, nella cittadella internazionale di Loppiano
+        (Figline e Incisa Valdarno), ci sono le residenze, la biblioteca e la vita accademica
+        quotidiana.</p>
+      </div>
+    </div>
+  </div>
+</section>'''
+
+
+def blocco_titolo(ind):
+    if not ind['doppio_titolo']:
+        return '''
+<section>
+  <div class="wrap narrow prose">
+    <p class="eyebrow">Il titolo</p>
+    <h2 style="margin-top:8px">Un Baccalaureato interamente a Sophia</h2>
+    <p>Il percorso si conclude con il Baccalaureato in Filosofia e Scienze Umane, titolo
+    accademico pontificio rilasciato dall\u2019Istituto Universitario Sophia, eretto dalla
+    Santa Sede. Tutti gli esami si sostengono a Sophia.</p>
+  </div>
+</section>'''
+    # NOTA INTERNA: la frase sull'accesso all'albo va confermata dalla Segreteria
+    # prima del lancio (classe L-24, esame di Stato, sezione dell'albo).
+    albo = ('''<p>La laurea statale in classe L-24 è il titolo che apre il percorso professionale
+    in psicologia: dà accesso alle lauree magistrali in Psicologia e, superato l\u2019esame di
+    Stato, all\u2019albo degli psicologi.</p>'''
+            if 'Psicologia' in ind['nome'] else '')
+    return f'''
+<section>
+  <div class="wrap narrow prose">
+    <p class="eyebrow">Il titolo</p>
+    <h2 style="margin-top:8px">Due lauree in tre anni</h2>
+    <p>Il percorso rilascia due titoli: il <b>Baccalaureato in Filosofia e Scienze Umane</b>,
+    titolo accademico pontificio dell\u2019Istituto Universitario Sophia, e la <b>laurea statale
+    italiana</b> dell\u2019<a href="https://fissuf.unipg.it/" target="_blank" rel="noopener">Università
+    degli Studi di Perugia</a>, nel corso interclasse L-5 e L-24 «Filosofia e Scienze e Tecniche
+    Psicologiche». Alcuni esami si sostengono a Perugia: nel piano che segue sono segnalati uno
+    per uno.</p>
+    {albo}
+  </div>
+</section>'''
+
+
+def genera_indirizzo(piano, ind, corsi, docenti):
+    meta = piano['meta']
+    conf = INDIRIZZI_PAGINA[ind['nome']]
+    su = ''
+
+    anni = ''
+    for n, anno in enumerate(ind['anni'], 1):
+        righe = '\n'.join(riga_corso(c, su) for c in anno['corsi'])
+        anni += f'''
+    <section class="anno" aria-labelledby="anno-{n}">
+      <div class="anno-testa">
+        <h3 id="anno-{n}">{ROMANI[n]} anno</h3>
+        <p class="anno-tot"><b>{anno['totale_ects']}</b> ECTS · {len(anno['corsi'])} insegnament{'o' if len(anno['corsi'])==1 else 'i'}</p>
+      </div>
+      <ol class="corso-lista">
+{righe}
+      </ol>
+    </section>'''
+
+    # i nomi vanno letti come li legge il resto del sito: separati da «;»,
+    # saltando gli esami sostenuti a Perugia e le titolarità non ancora assegnate
+    nomi = []
+    for anno in ind['anni']:
+        for c in anno['corsi']:
+            if c.get('esterno') or not c.get('docente'):
+                continue
+            for n in [x.strip() for x in c['docente'].split(';')]:
+                if n and n not in NON_PERSONE and n not in nomi:
+                    nomi.append(n)
+    schede_doc = '\n'.join(
+        f'''<a class="mini" href="{su}docenti/{slug(n)}.html">'''
+        f'''<span class="avatar">{esc(iniziali(n))}</span><span>{esc(n)}</span></a>'''
+        for n in nomi[:14])
+
+    corpo = f'''{intestazione(conf['h1'], 'Baccalaureato in Filosofia e Scienze Umane · ' + ind['nome'], conf['sommario'], None)}
+
+<section>
+  <div class="wrap narrow prose">
+    <p class="lead">{esc(ind.get('descrizione') or '')}</p>
+    <p>Il percorso dura tre anni per un totale di {ind['totale_ects']} ECTS, con un rapporto fra
+    docenti e studenti di circa uno a cinque. Qui sotto trovi il piano completo, insegnamento per
+    insegnamento, con i docenti che li tengono.</p>
+    <p><a href="{su}ammissione.html">Come si entra a Sophia →</a></p>
+  </div>
+</section>
+{blocco_titolo(ind)}
+{blocco_dove()}
+
+<section class="piano">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Il piano degli studi</p><h2>Tre anni, {ind['totale_ects']} ECTS</h2></div>
+    {anni}
+    <p class="scarica-pdf" style="margin-top:26px"><a class="btn btn-navy" href="{su}{meta['pdf']}" download>Scarica il piano in PDF</a>
+    &nbsp;<a class="btn btn-ghost" href="{su}{meta['pagina']}">Confronta i tre indirizzi</a></p>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Chi insegna</p><h2>I docenti di questo indirizzo</h2></div>
+    <div class="docenti-mini" style="margin-top:26px">{schede_doc}</div>
+    <p style="margin-top:22px"><a href="{su}docenti.html">Tutti i docenti dell\u2019Istituto →</a></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Vuoi parlarne con qualcuno?</h2>
+    <p>I referenti per i futuri studenti rispondono a domande su piano di studi, riconoscimento
+    dei crediti, doppio titolo e residenze.</p>
+    <a class="btn btn-navy" href="{su}ammissione.html">Ammissione e iscrizione</a>
+    &nbsp;<a class="btn btn-ghost" href="{su}contatti.html">Richiedi informazioni</a>
+  </div>
+</section>'''
+
+    briciole = [('Home', 'index.html'), ('Offerta formativa', 'offerta.html'),
+                (meta['breve'], meta['pagina']), (ind['nome'], None)]
+    scheda = {
+        '@context': 'https://schema.org', '@type': 'EducationalOccupationalProgram',
+        'name': f"{meta['corso_di_studi']} — {ind['nome']}",
+        'description': conf['descrizione'],
+        'url': SITO_URL + conf['file'],
+        'provider': ENTE,
+        'educationalProgramMode': 'full-time',
+        'timeToComplete': 'P3Y',
+        'numberOfCredits': {'@type': 'StructuredValue', 'value': ind['totale_ects'],
+                            'unitText': 'ECTS'},
+        'educationalCredentialAwarded': (
+            'Baccalaureato in Filosofia e Scienze Umane (titolo pontificio) e laurea statale '
+            "dell'Università degli Studi di Perugia, classe interclasse L-5 e L-24"
+            if ind['doppio_titolo'] else
+            'Baccalaureato in Filosofia e Scienze Umane (titolo pontificio)'),
+        'inLanguage': 'it',
+        'occupationalCategory': ('Psicologo' if 'Psicologia' in ind['nome'] else None),
+    }
+    scheda = {k: v for k, v in scheda.items() if v is not None}
+    return pagina(0, conf['h1'], conf['descrizione'], briciole, corpo, 'indirizzo',
+                  sezione='studiare', corrente=conf['file'],
+                  titolo_pagina=conf['titolo_scheda'], schema=[scheda])
 
 
 def genera_corso(c, su='../'):
@@ -408,9 +668,30 @@ def genera_corso(c, su='../'):
 </section>'''
     briciole = [('Home', 'index.html'), ('Offerta formativa', 'offerta.html'),
                 (c['presenze'][0]['breve'], c['presenze'][0]['pagina']), (c['nome'], None)]
+    scheda = {
+        '@context': 'https://schema.org', '@type': 'Course',
+        'name': c['nome'],
+        'description': f"{c['nome']}: insegnamento da {c['ects']} ECTS del "
+                       f"Baccalaureato in Filosofia e Scienze Umane dell'Istituto Universitario Sophia.",
+        'url': SITO_URL + f"corsi/{c['slug']}.html",
+        'provider': ENTE, 'inLanguage': 'it',
+        'educationalCredentialAwarded': 'ECTS',
+        'numberOfCredits': c['ects'],
+        'courseCode': c['ssd'] or None,
+        'hasCourseInstance': {
+            '@type': 'CourseInstance',
+            'courseMode': 'onsite',
+            'location': {'@type': 'Place', 'name': 'Istituto Universitario Sophia',
+                         'address': {'@type': 'PostalAddress', 'addressLocality': 'Firenze',
+                                     'addressCountry': 'IT'}},
+            'instructor': [{'@type': 'Person', 'name': n} for n in c['docenti']] or None,
+        },
+    }
+    scheda = {k: v for k, v in scheda.items() if v is not None}
+    scheda['hasCourseInstance'] = {k: v for k, v in scheda['hasCourseInstance'].items() if v is not None}
     return pagina(1, c['nome'],
                   f"{c['nome']}: {c['ects']} ECTS, settore {c['ssd'] or 'non assegnato'}, Istituto Universitario Sophia.",
-                  briciole, corpo, 'scheda-corso')
+                  briciole, corpo, 'scheda-corso', sezione='studiare', schema=[scheda])
 
 
 def genera_docente(d, su='../'):
@@ -485,9 +766,17 @@ def genera_docente(d, su='../'):
   </div>
 </section>'''
     briciole = [('Home', 'index.html'), ('Docenti', 'docenti.html'), (d['nome'], None)]
+    scheda = {
+        '@context': 'https://schema.org', '@type': 'Person',
+        'name': d['nome'],
+        'url': SITO_URL + f"docenti/{d['slug']}.html",
+        'jobTitle': d.get('qualifica') or d.get('ruolo') or None,
+        'affiliation': ENTE, 'worksFor': ENTE,
+    }
+    scheda = {k: v for k, v in scheda.items() if v is not None}
     return pagina(1, d['nome'],
                   f"{d['nome']}: profilo e insegnamenti presso l'Istituto Universitario Sophia.",
-                  briciole, corpo, 'scheda-docente')
+                  briciole, corpo, 'scheda-docente', sezione='istituto', schema=[scheda])
 
 
 def genera_indice_corsi(corsi):
@@ -513,7 +802,8 @@ def genera_indice_corsi(corsi):
 <section><div class="wrap">{sezioni}</div></section>'''
     return pagina(1, 'Insegnamenti',
                   'Tutti gli insegnamenti del Baccalaureato in Filosofia e Scienze Umane dell\'Istituto Universitario Sophia.',
-                  [('Home', 'index.html'), ('Offerta formativa', 'offerta.html'), ('Insegnamenti', None)], corpo)
+                  [('Home', 'index.html'), ('Offerta formativa', 'offerta.html'), ('Insegnamenti', None)], corpo,
+                  sezione='studiare', corrente='corsi/index.html')
 
 
 def genera_indice_docenti(docenti, categorie, profondita=0):
@@ -596,7 +886,8 @@ def genera_indice_docenti(docenti, categorie, profondita=0):
 </section>'''
     return pagina(profondita, 'Docenti',
                   "I docenti dell'Istituto Universitario Sophia: chi insegna nei corsi di laurea e il corpo accademico, con i rispettivi insegnamenti.",
-                  [('Home', 'index.html'), ('Docenti', None)], corpo)
+                  [('Home', 'index.html'), ('Docenti', None)], corpo,
+                  sezione='istituto', corrente='docenti.html')
 
 
 def genera_staff(staff, organi):
@@ -648,7 +939,8 @@ def genera_staff(staff, organi):
 </section>"""
     return pagina(0, 'Staff e organi di ateneo',
                   "Lo staff dell'Istituto Universitario Sophia e gli organi di ateneo: autorità personali, collegiali e organismi operativi.",
-                  [('Home', 'index.html'), ('Staff e organi', None)], corpo)
+                  [('Home', 'index.html'), ('Staff e organi', None)], corpo,
+                  sezione='istituto', corrente='staff.html')
 
 
 
@@ -722,7 +1014,8 @@ def genera_stampa(piano):
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
+<!-- copia per la stampa: resta fuori dagli indici anche dopo il lancio -->
+<meta name="robots" content="noindex">
 <title>{esc(piano['titolo'])} — Piano degli studi</title>
 <style>
   @page {{ size:A4; margin:18mm 16mm 20mm }}
@@ -817,6 +1110,48 @@ presso l'Università degli Studi di Perugia nell'ambito della convenzione di dop
 
 # --------------------------------------------------------------------- main
 
+def genera_404():
+    """Pagina per gli indirizzi che non esistono più o sbagliati.
+    I collegamenti sono relativi: il <base> qui sotto li fa funzionare sia sul
+    dominio vero sia sull'anteprima di GitHub Pages, che vive in sottocartella."""
+    corpo = '''<section class="page-hero">
+  <div class="rombo pr1"></div><div class="rombo pr2"></div>
+  <div class="wrap">
+    <p class="eyebrow light">Errore 404</p>
+    <h1>Questa pagina non c'è</h1>
+    <p>L'indirizzo è cambiato, oppure c'è un refuso. Da qui puoi ripartire.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cards c3">
+      <a class="card" href="offerta.html"><h3>Offerta formativa</h3>
+        <p>Baccalaureato, Licenza magistrale, dottorato e percorsi brevi.</p></a>
+      <a class="card" href="ammissione.html"><h3>Ammissione</h3>
+        <p>Come si entra a Sophia, scadenze e documenti.</p></a>
+      <a class="card" href="contatti.html"><h3>Contatti</h3>
+        <p>Le due sedi, i recapiti e il modulo per scriverci.</p></a>
+    </div>
+    <p style="margin-top:30px"><a class="btn btn-navy" href="index.html">Torna alla home</a></p>
+  </div>
+</section>'''
+    h = pagina(0, 'Pagina non trovata',
+               "La pagina cercata non esiste più o l'indirizzo è sbagliato: riparti da qui.",
+               [('Home', 'index.html'), ('Pagina non trovata', None)], corpo)
+    base = ("<script>document.write('<base href=\"'+"
+            "(location.pathname.indexOf('/sito-sophia/')===0?'/sito-sophia/':'/')+'\">')</script>")
+    h = h.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n' + base, 1)
+    # la pagina d'errore non va indicizzata mai, nemmeno dopo il lancio
+    if 'name="robots"' in h:
+        h = h.replace('<meta name="robots" content="noindex, nofollow">',
+                      '<meta name="robots" content="noindex">', 1)
+    else:
+        h = h.replace('<meta charset="UTF-8">',
+                      '<meta charset="UTF-8">\n<meta name="robots" content="noindex">', 1)
+    return h
+
+
 def main():
     piani, corsi, docenti, categorie, staff, organi = carica()
     os.makedirs(os.path.join(BASE, 'corsi'), exist_ok=True)
@@ -825,6 +1160,7 @@ def main():
     scritti = 0
     def scrivi(percorso, contenuto):
         nonlocal scritti
+        contenuto = sistema(contenuto, percorso)
         with open(os.path.join(BASE, percorso), 'w', encoding='utf-8') as f:
             f.write(contenuto)
         scritti += 1
@@ -833,6 +1169,14 @@ def main():
     for piano in piani:
         scrivi(piano['meta']['pagina'], genera_piano(piano, corsi, docenti))
         scrivi('stampa/' + piano['meta']['pagina'], genera_stampa(piano))
+    for piano in piani:
+        if piano['meta']['chiave'] != 'baccalaureato':
+            continue
+        for ind in piano['indirizzi']:
+            if ind['nome'] in INDIRIZZI_PAGINA:
+                scrivi(INDIRIZZI_PAGINA[ind['nome']]['file'],
+                       genera_indirizzo(piano, ind, corsi, docenti))
+    scrivi('404.html', genera_404())
     scrivi('corsi/index.html', genera_indice_corsi(corsi))
     scrivi('docenti.html', genera_indice_docenti(docenti, categorie))
     scrivi('staff.html', genera_staff(staff, organi))

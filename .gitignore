@@ -7,3 +7,6 @@ node_modules/
 video-sorgenti/
 *.MOV
 videoplayback.mp4
+
+# pacchetti di appoggio usati per portare i file sul computer: fuori da git
+_da_cancellare/

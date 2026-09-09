@@ -1,5 +1,5 @@
 // Fondazione «Per Sophia» ETS — configurazione del modulo di adesione.
-// Dopo aver pubblicato strumenti/FondazioneBackend.gs come App web di Google
-// Apps Script, incolla qui l'URL generato (quello che finisce con /exec).
-// Finché resta vuoto, il modulo avvisa che l'invio non è ancora attivo.
-var BACKEND_URL = '';
+// URL della App web di Google Apps Script (strumenti/FondazioneBackend.gs).
+// Finché nel backend la variabile PROVA è valorizzata, tutte le mail arrivano
+// solo a quell'indirizzo: per andare in produzione basta svuotarla lì.
+var BACKEND_URL = 'https://script.google.com/macros/s/AKfycbw3bBYSJILt4JEclK_6emu9nsjIhHRWtHSbZjUqZWuvBAfWRpn8AoCJiCdGoyqZwviG/exec';

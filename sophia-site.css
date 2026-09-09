@@ -1148,23 +1148,33 @@ footer.site{view-transition-name:piede}
 }
 
 /* ============================================================
-   FONDAZIONE PER SOPHIA ETS — sezione con sotto-identità
+   BARRA DI SEZIONE
+   Sotto l'intestazione: il nome della sezione e le sue pagine.
+   La usa la Fondazione (.fond-nav, con il marchio) e la usano le
+   sezioni del sito (.sez-nav, con il solo titolo).
    ============================================================ */
-.fond-nav{
+.fond-nav, .sez-nav{
   background:var(--color-surface);border-bottom:.5px solid var(--color-border);
   position:sticky;top:var(--header-h);z-index:30;
 }
-.fond-nav .wrap{display:flex;align-items:center;gap:22px;min-height:54px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.fond-nav .wrap, .sez-nav .wrap{display:flex;align-items:center;gap:22px;min-height:54px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
 .fond-marchio{display:inline-flex;align-items:center;gap:10px;font-size:14.5px;color:var(--sophia-navy);font-weight:500;flex:none}
 .fond-marchio img{width:34px;height:34px}
 .fond-marchio b{font-weight:500;color:var(--color-text-eyebrow)}
-.fond-voci{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto}
-.fond-voci a{
+.fond-voci, .sez-voci{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto}
+.sez-titolo{font-size:14.5px;color:var(--sophia-navy);font-weight:500;flex:none;letter-spacing:.01em}
+/* nelle sezioni il titolo resta a sinistra e le voci occupano il resto della
+   riga, andando a capo dentro il proprio spazio invece di staccarsi. */
+.sez-nav .wrap{flex-wrap:nowrap;align-items:flex-start;gap:18px}
+.sez-titolo{padding-top:8px}
+.sez-voci{margin-left:0;flex:1 1 auto}
+.sez-voci a{font-size:13px;padding:7px 10px}
+.fond-voci a, .sez-voci a{
   font-size:13.5px;color:var(--color-text-body);padding:7px 11px;border-radius:30px;
   transition:background var(--dur-sm) var(--ease),color var(--dur-sm) var(--ease);
 }
-.fond-voci a:hover{background:var(--color-bg-alt);color:var(--sophia-navy)}
-.fond-voci a[aria-current="page"]{background:var(--sophia-navy);color:var(--color-text-on-dark)}
+.fond-voci a:hover, .sez-voci a:hover{background:var(--color-bg-alt);color:var(--sophia-navy)}
+.fond-voci a[aria-current="page"], .sez-voci a[aria-current="page"]{background:var(--sophia-navy);color:var(--color-text-on-dark)}
 
 .cf-gigante{margin:18px 0 22px;font-size:15px;letter-spacing:.08em}
 .cf-gigante b{
@@ -1191,8 +1201,8 @@ footer.site{view-transition-name:piede}
 .statuto p{font-size:16px}
 
 @media (max-width:860px){
-  .fond-nav{position:static}
-  .fond-voci{margin-left:0}
+  .fond-nav, .sez-nav{position:static}
+  .fond-voci, .sez-voci{margin-left:0}
 }
 
 /* ── «Sostieni» nel menu: box navy pieno con l'albero della Fondazione ── */
@@ -1253,4 +1263,69 @@ nav.main > ul > li.nav-sostieni > a[aria-current="page"]{
 @media(max-width:560px){
   .modulo-lungo fieldset{padding:18px 16px 20px}
   .modulo-ente__corpo{padding:0 16px 18px}
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   RIFINITURE PER IL TELEFONO
+   Tre problemi osservati su schermo da 390px: parole lunghe (email,
+   IBAN, codici fiscali) che allargavano la pagina, righe di passi
+   rimaste a tre colonne, e testi o bersagli troppo piccoli per un dito.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* i passi a tre colonne restano tali solo dove c'è spazio */
+.steps.steps-3{grid-template-columns:repeat(3,1fr)}
+
+@media(max-width:860px){
+  /* 1 · nessuno scorrimento laterale ------------------------------ */
+  /* in una griglia le celle non scendono sotto il contenuto più lungo:
+     senza questo, un indirizzo email allarga tutta la pagina. */
+  .cards > *, .cols2 > *, .cgrid > *, .steps > *, .grid > *,
+  .people-grid > *, .org-grid > *, .bodies > *, .news-grid > *{min-width:0}
+  .card, .panel, .step, .prose p, .deflist span, .deflist b, td, th, dd, li{
+    overflow-wrap:anywhere;
+  }
+  .steps, .steps.steps-3, .steps.sei{grid-template-columns:1fr}
+
+  /* 2 · testi leggibili ------------------------------------------- */
+  .corso-riga .ects small{font-size:12px}
+  .corso-riga .ssd{font-size:12.5px}
+  .sem{font-size:13px}
+
+  /* 3 · bersagli comodi da toccare -------------------------------- */
+  .util .wrap{height:auto;min-height:46px}
+  .util .lang a{
+    display:inline-block;margin-left:2px;padding:11px 13px;
+    min-height:44px;box-sizing:border-box;line-height:22px;
+  }
+  .breadcrumb a{display:inline-block;padding:5px 0}
+  /* nelle liste dei corsi il nome e il docente sono i due bersagli veri */
+  .corso-riga .nome > a, .corso-riga .doc a{display:inline-block;padding:7px 0}
+  .fond-voci a, .sez-voci a{min-height:42px;display:inline-flex;align-items:center}
+  footer.site nav a{display:inline-block;padding:7px 0}
+
+  /* 4 · barra della Fondazione: una riga sola che scorre col dito -- */
+  .fond-nav .wrap, .sez-nav .wrap{display:block;padding-top:10px;padding-bottom:0}
+  .fond-marchio, .sez-titolo{display:block;margin-bottom:8px}
+  .fond-voci, .sez-voci{
+    flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:6px;
+    margin:0 -20px;padding:2px 20px 10px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    overscroll-behavior-x:contain;
+  }
+  .fond-voci::-webkit-scrollbar, .sez-voci::-webkit-scrollbar{display:none}
+  .fond-voci a, .sez-voci a{white-space:nowrap;flex:0 0 auto}
+
+  /* 5 · nel menu del telefono restano le sezioni: le sottovoci stanno
+        nella barra di sezione, subito sotto l'intestazione ---------- */
+  nav.main .dropdown{display:none}
+  nav.main .has-drop > a::after{content:none}
+  nav.main > ul > li > a{padding:16px 28px;font-size:16px}
+
+  /* 6 · i rombi decorativi non rubano la scena al titolo ----------- */
+  .page-hero .rombo{opacity:.32}
+}
+
+@media(max-width:520px){
+  /* su schermi stretti anche il titolo del marchio va a capo pulito */
+  .fond-marchio{font-size:14px}
 }
